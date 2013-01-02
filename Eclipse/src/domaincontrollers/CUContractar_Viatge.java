@@ -22,7 +22,7 @@ public class CUContractar_Viatge extends ControladorCasUs {
 		/* TODO */
 	}
 	
-	public HashSet<Pair<String,Float>> mostraHotelsLliures(String dniClient, Date dataInici) {
+	public HashSet<Pair<String,Float>> mostraHotelsLliures() {
 		cureservar_habitacio = new CUReservar_Habitacio();
     	return cureservar_habitacio.mostraHotelsLliures(dniClient, dataInici).getSecond();
 	}
