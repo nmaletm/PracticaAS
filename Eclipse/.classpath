@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/asm.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/asm-attrs.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/concurrent-1.3.2.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/connector.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/ehcache-1.2.3.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/hibernate3.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/jaas.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/javassist.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/jboss-cache.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/jboss-common.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/jboss-jmx.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/jboss-system.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/jdbc2_0-stdext.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/jgroups-2.2.8.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/jta.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/oscache-2.1.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/proxool-0.8.3.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/slf4j-log4j12-1.5.8.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/hibernate/swarmcache-1.0rc2.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/annotations/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="/home/marcct/Desktop/eclipse/plugins/org.hibernate.eclipse.libs_3.6.0.Final-v20121205-1936-B77/lib/annotations/hibernate-validator.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
