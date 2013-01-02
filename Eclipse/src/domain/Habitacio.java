@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,7 +21,6 @@ public class Habitacio {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Hotel hotel;
 	
-
     @Column(name="numero")
 	private Integer numero;
 
@@ -66,4 +66,13 @@ public class Habitacio {
 		this.nomHotel = nomHotel;
 	}
 	*/
+	
+	public Boolean estaLliure(Date dataIni, Date dataFi) {
+		/* TODO */
+    	return null;	
+	}
+	
+	public void afegeixViatge(Viatge v) {
+		/* TODO */
+	}
 }

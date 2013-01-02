@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -76,5 +77,23 @@ public class Hotel {
 	public void setHabitacions(List<Habitacio> habitacions) {
 		this.habitacions = habitacions;
 	}
+
+	public Float obteVariacioPreu() {
+		return (float) 0;
+	}
 	
+	public Boolean teHabitacioLliure(Date dataIni, Date dataFi) {
+		/* TODO */
+    	return null;
+	}
+	
+	public Float calculaPreuHabitacio(Date dataIni, Date dataFi) {
+		/* TODO */
+    	return null;	
+	}
+	
+	public Habitacio getHabitacioLliure(Date dataIni, Date dataFi) {
+		/* TODO */
+    	return null;
+	}
 }
