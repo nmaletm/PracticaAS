@@ -42,7 +42,7 @@ public class HibernateUtil {
     }
     */
     
-    private static Object save(Object o) {
+    public static Object save(Object o) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
  
@@ -57,7 +57,7 @@ public class HibernateUtil {
         return o;
     }
  
-    private static Object update(Object o) {
+    public static Object update(Object o) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
  
