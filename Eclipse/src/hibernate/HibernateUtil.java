@@ -1,7 +1,10 @@
 package hibernate;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
+
+import domain.Hotel;
 
 public class HibernateUtil {
   
@@ -10,7 +13,7 @@ public class HibernateUtil {
     private static SessionFactory buildSessionFactory() {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
-            /* Axi� es per fer-ho sense anotacions
+            /* Axio es per fer-ho sense anotacions
              return new Configuration()
              
             
@@ -28,5 +31,45 @@ public class HibernateUtil {
   
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+    /*
+    private static Object read(int id) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+ 
+        Object o = session.get(Hotel.class, id);
+        session.close();
+        return o;
+    }
+    */
+    
+    private static Object save(Object o) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+ 
+        session.beginTransaction();
+ 
+        session.save(o);
+        
+        session.getTransaction().commit();
+         
+        session.close();
+ 
+        return o;
+    }
+ 
+    private static Object update(Object o) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+ 
+        session.beginTransaction();
+ 
+        session.merge(o);
+         
+        session.getTransaction().commit();
+         
+        session.close();
+        return o;
+ 
     }
 }
