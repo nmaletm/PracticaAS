@@ -1,13 +1,14 @@
 package domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,19 +18,19 @@ public class Habitacio {
 	@Id
 	@GeneratedValue
 	private int id;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Hotel hotel;
 	
     @Column(name="numero")
 	private Integer numero;
 
+	@OneToMany(cascade=CascadeType.ALL)  
+	private List<Habitacio> habitacions;  
+	
     public Habitacio(){
     	
     }
     
-    public Habitacio(Hotel hotel, Integer numero){
-    	this.setHotel(hotel);
+    public Habitacio(Integer hotelID, Integer numero){
+    	/** TODO **/
     	this.numero = numero;
     }
     
@@ -40,14 +41,6 @@ public class Habitacio {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
-	
-	public Hotel getHotel() {
-		return hotel;
-	}
-
-	public void setHotel(Hotel hotel) {
-		this.hotel = hotel;
-	}
 
 	public int getId() {
 		return id;
@@ -57,16 +50,6 @@ public class Habitacio {
 		this.id = id;
 	}
 
-	@Column(name="nomHotel", nullable = false, length = 100)
-	public String getNomHotel() {
-		return hotel.getNom();
-	}
-	/*
-	public void setNomHotel(String nomHotel) {
-		this.nomHotel = nomHotel;
-	}
-	*/
-	
 	public Boolean estaLliure(Date dataIni, Date dataFi) {
 		/* TODO */
     	return null;	

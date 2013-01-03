@@ -3,9 +3,13 @@ package domain;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import utility.Pair;
@@ -14,6 +18,7 @@ import utility.Pair;
 @Table(name="CIUTAT")
 public class Ciutat {
 	
+	@Id
     @Column(name="nom", nullable = false, length = 100)
 	private String nom;
     
@@ -23,6 +28,9 @@ public class Ciutat {
     @Column(name="preuVol")
 	private float preuVol;
     
+	@OneToMany(cascade=CascadeType.ALL)  
+	private List<Hotel> hotels;  
+	
     public String getNom() {
     	return nom;
     }

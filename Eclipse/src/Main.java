@@ -23,7 +23,7 @@ public class Main {
         // Escritura
         {
         System.out.println("******* Escritura *******");
-	        Hotel hotel = new Hotel("Rey Juan Carlos", 200, "Barcelona");
+	        Hotel hotel = new Hotel("Barcelona","Rey Juan Carlos", 200);
 	        hotel = save(hotel);
 	        hotel = read(hotel.getId());
 	        System.out.printf("%d %s %s \n", hotel.getId(), hotel.getNom(), hotel.getPreu());
