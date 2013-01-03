@@ -1,6 +1,9 @@
 package data;
 
+import java.util.List;
+
 import datainterface.CtrlHotel;
+import domain.Hotel;
 
 public class CtrlHotelDB implements CtrlHotel {
 	private static CtrlHotelDB singleton;
@@ -12,4 +15,22 @@ public class CtrlHotelDB implements CtrlHotel {
 	}
 	
 	public CtrlHotelDB() {}
+
+	@Override
+	public Hotel get(String nomCiutat, String nomHotel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean exists(String nomCiutat, String nomHotel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Hotel> all() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -26,7 +26,7 @@ public class Viatge {
 	private Date dataInici;
     
     @Column(name="dataFi")
-	private Date dataFi;
+	private Date dataFinal;
     
 	@ManyToOne(cascade = CascadeType.PERSIST)
     private Client client;
@@ -37,12 +37,16 @@ public class Viatge {
 	@ManyToOne(optional = true, cascade = CascadeType.PERSIST)
 	private Habitacio habitacio;
 	
-    public Viatge(Client cl, Ciutat c, Date dataIni, Date dataFi) {
-    	/* TODO */
+    public Viatge(Client cl, Date dataIni, Date dataFi, Ciutat c) {
+    	client = cl;
+    	dataInici = dataIni;
+    	dataFinal = dataFi;
+    	ciutat = c;
+    	cl.afegeixViatge(this);
     }
     
     public Date getDataFi() {
-    	return dataFi;
+    	return dataFinal;
     }
     
     public String getNomCiutat() {

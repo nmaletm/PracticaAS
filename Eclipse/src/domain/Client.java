@@ -36,6 +36,7 @@ public class Client {
     }
     
     public void afegeixViatge (Viatge v) {
-    	/* TODO */
+    	viatges.add(v);
+    	nombreViatges++;
     }
 }
