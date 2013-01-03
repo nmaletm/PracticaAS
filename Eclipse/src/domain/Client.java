@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,8 +32,11 @@ public class Client {
 	private List<Viatge> viatges;  
 	
     public Boolean teViatge(Date dataIni, Date dataFi) {
-    	/* TODO */
-    	return null;
+    	Iterator<Viatge> it = viatges.iterator();
+    	Boolean trobat = false;
+    	while (it.hasNext() && !trobat)
+    		trobat = it.next().interseccionaPeriode(dataIni, dataFi);
+    	return trobat;
     }
     
     public void afegeixViatge (Viatge v) {

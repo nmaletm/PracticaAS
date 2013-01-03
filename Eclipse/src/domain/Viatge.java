@@ -1,6 +1,8 @@
 package domain;
 
 
+import hibernate.HibernateUtil;
+
 import java.util.Date;
 import java.util.HashSet;
 
@@ -25,7 +27,7 @@ public class Viatge {
     @Column(name="dataInici", nullable = false)
 	private Date dataInici;
     
-    @Column(name="dataFi")
+    @Column(name="dataFinal")
 	private Date dataFinal;
     
 	@ManyToOne(cascade = CascadeType.PERSIST)
@@ -43,6 +45,7 @@ public class Viatge {
     	dataFinal = dataFi;
     	ciutat = c;
     	cl.afegeixViatge(this);
+    	HibernateUtil.update(cl);
     }
     
     public Date getDataFi() {
@@ -55,8 +58,9 @@ public class Viatge {
     }
     
     public Boolean interseccionaPeriode(Date dataIni, Date dataFi) {
-        /* TODO */
-    	return null;
+    	return ((dataInici.before(dataIni) && dataFinal.after(dataIni)) || 
+    			(dataInici.before(dataFi) && dataFinal.after(dataFi)) ||
+    			(dataInici.after(dataFi) && dataFinal.before(dataFi)));
     }
     
     public HashSet<Pair<String,Float>> getHotelsLliures(Date dataIni, Date DataFi) {
