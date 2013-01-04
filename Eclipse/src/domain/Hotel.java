@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -69,13 +70,17 @@ public class Hotel {
 	}
 	
 	public Boolean teHabitacioLliure(Date dataIni, Date dataFi) {
-		/* TODO */
-    	return null;
+		Boolean trobat = false;
+		Iterator<Habitacio> it = habitacions.iterator();
+		while (it.hasNext() && !trobat) {
+			trobat = it.next().estaLliure(dataIni, dataFi);
+		}
+    	return trobat;
 	}
 	
 	public Float calculaPreuHabitacio(Date dataIni, Date dataFi) {
-		/* TODO */
-    	return null;	
+		float var = obteVariacioPreu();
+    	return (preu+var)*((dataFi.getTime()-dataIni.getTime())/1000/60/60/24);	
 	}
 	
 	public Habitacio getHabitacioLliure(Date dataIni, Date dataFi) {

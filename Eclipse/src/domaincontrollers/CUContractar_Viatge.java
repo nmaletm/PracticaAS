@@ -48,7 +48,7 @@ public class CUContractar_Viatge extends ControladorCasUs {
 		dataFinal = dataFi;
 	}
 	
-	public HashSet<Pair<String,Float>> mostraHotelsLliures() {
+	public HashSet<Pair<String,Float>> mostraHotelsLliures() throws Exception {
 		cureservar_habitacio = new CUReservar_Habitacio();
     	return cureservar_habitacio.mostraHotelsLliures(dniClient, dataInici).getSecond();
 	}

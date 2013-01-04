@@ -2,6 +2,7 @@ package domain;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Iterator;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ public class Habitacio {
 	private Integer numero;
 
 	@OneToMany(cascade=CascadeType.ALL)  
-	private List<Habitacio> habitacions;  
+	private List<Viatge> viatges;
 	
     public Habitacio(){
     	
@@ -51,8 +52,11 @@ public class Habitacio {
 	}
 
 	public Boolean estaLliure(Date dataIni, Date dataFi) {
-		/* TODO */
-    	return null;	
+		Boolean trobat = true;
+		Iterator<Viatge> it = viatges.iterator();
+		while (it.hasNext() && trobat)
+			trobat = !it.next().interseccionaPeriode(dataIni, dataFi);
+    	return trobat;	
 	}
 	
 	public void afegeixViatge(Viatge v) {

@@ -3,6 +3,7 @@ package domain;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -40,7 +41,18 @@ public class Ciutat {
     }
     
     public HashSet<Pair<String,Float>> getHotelsLliures(Date dataIni, Date dataFi) {
-    	/* TODO */
-    	return null;
+    	HashSet<Pair<String,Float>> resultat = new HashSet<Pair<String,Float>>();
+    	
+    	Iterator<Hotel> it = hotels.iterator();
+    	while (it.hasNext()) {
+    		Hotel h = it.next();
+    		Boolean b = h.teHabitacioLliure(dataIni, dataFi);
+    		if (b) {
+    			Float preu = h.calculaPreuHabitacio(dataIni, dataFi);
+    			String nom = h.getNom();
+    			resultat.add(new Pair<String,Float>(nom,preu));
+    		}
+    	}
+    	return resultat;
     }    
 }

@@ -53,8 +53,7 @@ public class Viatge {
     }
     
     public String getNomCiutat() {
-    	/* TODO */
-    	return null;
+    	return ciutat.getNom();
     }
     
     public Boolean interseccionaPeriode(Date dataIni, Date dataFi) {
@@ -63,9 +62,8 @@ public class Viatge {
     			(dataInici.after(dataFi) && dataFinal.before(dataFi)));
     }
     
-    public HashSet<Pair<String,Float>> getHotelsLliures(Date dataIni, Date DataFi) {
-    	/* TODO */
-    	return null;
+    public HashSet<Pair<String,Float>> getHotelsLliures() {
+    	return ciutat.getHotelsLliures(dataInici, dataFinal);
     }
     
     public void afegeixHabitacio(Habitacio h) {
