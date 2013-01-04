@@ -1,5 +1,7 @@
 package domain;
 
+import hibernate.HibernateUtil;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Iterator;
@@ -60,6 +62,8 @@ public class Habitacio {
 	}
 	
 	public void afegeixViatge(Viatge v) {
-		/* TODO */
+		viatges.add(v);
+		v.afegeixHabitacio(this);
+		HibernateUtil.update(v);
 	}
 }

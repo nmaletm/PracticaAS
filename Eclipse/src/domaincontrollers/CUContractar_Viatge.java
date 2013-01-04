@@ -4,13 +4,14 @@ import hibernate.HibernateUtil;
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.LinkedList;
 
 import datainterface.CtrlCiutats;
 import datainterface.CtrlClient;
+import datainterface.CtrlHotel;
 import datainterface.DataControllerFactory;
 import domain.Ciutat;
 import domain.Client;
+import domain.Hotel;
 import domain.Viatge;
 
 import utility.Pair;
@@ -54,8 +55,18 @@ public class CUContractar_Viatge extends ControladorCasUs {
 	}
 	
 	public Float resevarHabitacio(String nomH) {
-		/* TODO */
-    	return null;
+		cureservar_habitacio.reservaHabitacio(nomH);
+		cureservar_habitacio = null;
+		
+		CtrlHotel hc = DataControllerFactory.getInstance().getHotelController();
+		
+		Hotel h = hc.get(nomCiutat, nomH);
+		
+		Float preu = h.calculaPreuHabitacio(dataInici, dataFinal);
+		preuHabitacio = preu;
+		float resultat = preuHabitacio + preuVol;
+		
+    	return resultat;
 	}
 	
 	public Boolean pagament(String numTarg, Date dataCad) {

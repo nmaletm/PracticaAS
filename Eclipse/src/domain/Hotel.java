@@ -84,7 +84,16 @@ public class Hotel {
 	}
 	
 	public Habitacio getHabitacioLliure(Date dataIni, Date dataFi) {
-		/* TODO */
-    	return null;
+		Boolean trobat = false;
+		Habitacio hab = null;
+		
+		Iterator<Habitacio> it = habitacions.iterator();
+		while (it.hasNext() && !trobat) {
+			Habitacio h = it.next();
+			trobat = h.estaLliure(dataIni, dataFi);
+			if (trobat) hab = h;
+		}
+		
+    	return hab;
 	}
 }
