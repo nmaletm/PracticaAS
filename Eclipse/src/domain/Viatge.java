@@ -67,6 +67,6 @@ public class Viatge {
     }
     
     public void afegeixHabitacio(Habitacio h) {
-    	/* TODO */	
+    	habitacio = h;
     }
 }

@@ -17,7 +17,7 @@ public class CtrlClientDB implements CtrlClient {
 	public CtrlClientDB() {}
 
 	@Override
-	public Client get(String dni) {
+	public Client get(String dni) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

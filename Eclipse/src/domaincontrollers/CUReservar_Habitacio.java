@@ -39,7 +39,8 @@ public class CUReservar_Habitacio extends ControladorCasUs {
 	public void reservaHabitacio(String nomH) {
 		CtrlHotel hc = DataControllerFactory.getInstance().getHotelController();
 		
-		Hotel h = hc.get(viatge.getNomCiutat(), nomH);
+		Hotel h = null;
+		try { h = hc.get(viatge.getNomCiutat(), nomH);} catch (Exception e) {/** Precondició **/}
 		Habitacio hab = h.getHabitacioLliure(dataInici, dataFinal);
 		
 		hab.afegeixViatge(viatge);

@@ -12,4 +12,8 @@ public class AdapterFactory {
 	
 	public AdapterFactory() {}
 
+	public IPagamentAdapter getPagamentAdapter() {
+		return new PagamentAdapter();
+	}
+
 }

@@ -17,7 +17,7 @@ public class CtrlHotelDB implements CtrlHotel {
 	public CtrlHotelDB() {}
 
 	@Override
-	public Hotel get(String nomCiutat, String nomHotel) {
+	public Hotel get(String nomCiutat, String nomHotel) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -18,7 +18,7 @@ public class CtrlViatgeDB implements CtrlViatge {
 	public CtrlViatgeDB() {}
 
 	@Override
-	public Viatge get(String dni, Date dataIni) {
+	public Viatge get(String dni, Date dataIni) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

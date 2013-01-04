@@ -10,4 +10,9 @@ public class ServiceLocator {
     }
 	
 	public ServiceLocator() {}
+
+	public BankService find(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

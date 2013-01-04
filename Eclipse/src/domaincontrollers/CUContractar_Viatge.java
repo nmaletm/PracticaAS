@@ -5,6 +5,9 @@ import hibernate.HibernateUtil;
 import java.util.Date;
 import java.util.HashSet;
 
+import adapters.AdapterFactory;
+import adapters.IPagamentAdapter;
+
 import datainterface.CtrlCiutats;
 import datainterface.CtrlClient;
 import datainterface.CtrlHotel;
@@ -60,7 +63,8 @@ public class CUContractar_Viatge extends ControladorCasUs {
 		
 		CtrlHotel hc = DataControllerFactory.getInstance().getHotelController();
 		
-		Hotel h = hc.get(nomCiutat, nomH);
+		Hotel h = null;
+		try { h = hc.get(nomCiutat, nomH);} catch (Exception e) {/** Precondició **/}
 		
 		Float preu = h.calculaPreuHabitacio(dataInici, dataFinal);
 		preuHabitacio = preu;
@@ -69,8 +73,9 @@ public class CUContractar_Viatge extends ControladorCasUs {
     	return resultat;
 	}
 	
-	public Boolean pagament(String numTarg, Date dataCad) {
-		/* TODO */
-    	return null;
+	public Boolean pagament(String numTarg, Date dataCad) throws Exception {
+		IPagamentAdapter ipa = AdapterFactory.getInstance().getPagamentAdapter();
+		
+    	return ipa.pagament(dniClient, numTarg, (preuVol+preuHabitacio), dataCad);
 	}
 }

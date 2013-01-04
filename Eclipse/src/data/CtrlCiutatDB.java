@@ -17,7 +17,7 @@ public class CtrlCiutatDB implements CtrlCiutats {
 	public CtrlCiutatDB() {}
 
 	@Override
-	public Ciutat get(String nom) {
+	public Ciutat get(String nom) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
