@@ -1,0 +1,41 @@
+/*C3*/SET SCHEMA PUBLIC
+alter table CIUTAT_HOTEL drop constraint FK9D7C3F0D5BF77005
+alter table CIUTAT_HOTEL drop constraint FK9D7C3F0D49B82787
+alter table CLIENT_VIATGE drop constraint FK7D1B147824CD5700
+alter table CLIENT_VIATGE drop constraint FK7D1B1478776999F9
+alter table HABITACIO_VIATGE drop constraint FK52303F075A28DB70
+alter table HABITACIO_VIATGE drop constraint FK52303F07776999F9
+alter table HOTEL_HABITACIO drop constraint FK6243CB3159B5D370
+alter table HOTEL_HABITACIO drop constraint FK6243CB3155EABA8B
+alter table VIATGE drop constraint FK96E4498424CD5700
+alter table VIATGE drop constraint FK96E4498449B82787
+alter table VIATGE drop constraint FK96E449845A28DB70
+drop table CIUTAT if exists
+drop table CIUTAT_HOTEL if exists
+drop table CLIENT if exists
+drop table CLIENT_VIATGE if exists
+drop table HABITACIO if exists
+drop table HABITACIO_VIATGE if exists
+drop table HOTEL if exists
+drop table HOTEL_HABITACIO if exists
+drop table VIATGE if exists
+create table CIUTAT (nom varchar(60) not null, descripcio varchar(100), preuVol float, primary key (nom))
+create table CIUTAT_HOTEL (CIUTAT_nom varchar(60) not null, hotels_id integer not null, unique (hotels_id))
+create table CLIENT (dni varchar(10) not null, nom varchar(60), nombreViatges integer, tlfn varchar(10), primary key (dni))
+create table CLIENT_VIATGE (CLIENT_dni varchar(10) not null, viatges_id integer not null, unique (viatges_id))
+create table HABITACIO (id integer not null, hotelID integer, numero integer, primary key (id))
+create table HABITACIO_VIATGE (HABITACIO_id integer not null, viatges_id integer not null, unique (viatges_id))
+create table HOTEL (DTYPE varchar(31) not null, id integer not null, nom varchar(60) not null, nomCiutat varchar(255), preu float, descompte float, recarrec float, primary key (id))
+create table HOTEL_HABITACIO (HOTEL_id integer not null, habitacions_id integer not null, unique (habitacions_id))
+create table VIATGE (id integer not null, dataFinal timestamp, dataInici timestamp not null, ciutat_nom varchar(60), client_dni varchar(10), habitacio_id integer, primary key (id))
+alter table CIUTAT_HOTEL add constraint FK9D7C3F0D5BF77005 foreign key (hotels_id) references HOTEL
+alter table CIUTAT_HOTEL add constraint FK9D7C3F0D49B82787 foreign key (CIUTAT_nom) references CIUTAT
+alter table CLIENT_VIATGE add constraint FK7D1B147824CD5700 foreign key (CLIENT_dni) references CLIENT
+alter table CLIENT_VIATGE add constraint FK7D1B1478776999F9 foreign key (viatges_id) references VIATGE
+alter table HABITACIO_VIATGE add constraint FK52303F075A28DB70 foreign key (HABITACIO_id) references HABITACIO
+alter table HABITACIO_VIATGE add constraint FK52303F07776999F9 foreign key (viatges_id) references VIATGE
+alter table HOTEL_HABITACIO add constraint FK6243CB3159B5D370 foreign key (HOTEL_id) references HOTEL
+alter table HOTEL_HABITACIO add constraint FK6243CB3155EABA8B foreign key (habitacions_id) references HABITACIO
+alter table VIATGE add constraint FK96E4498424CD5700 foreign key (client_dni) references CLIENT
+alter table VIATGE add constraint FK96E4498449B82787 foreign key (ciutat_nom) references CIUTAT
+alter table VIATGE add constraint FK96E449845A28DB70 foreign key (habitacio_id) references HABITACIO
