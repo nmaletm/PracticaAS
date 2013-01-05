@@ -16,9 +16,10 @@ import javax.persistence.Table;
 import utility.Pair;
 
 @Entity
-@Table(name="CIUTAT")
+@Table(name=Ciutat.TAULA)
 public class Ciutat {
-	
+	public static final String TAULA = "CIUTAT";
+
 	@Id
     @Column(name="nom", nullable = false, length = 60)
 	private String nom;

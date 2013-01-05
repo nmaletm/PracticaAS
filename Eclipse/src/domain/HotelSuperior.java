@@ -5,9 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="HOTELSUPERIOR")
+@Table(name=HotelSuperior.TAULA)
 public class HotelSuperior extends Hotel {
-
+	public static final String TAULA = "HOTELSUPERIOR";
+	
     @Column(name="recarrec")
 	private float recarrec;
     

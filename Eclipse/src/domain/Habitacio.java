@@ -14,9 +14,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="HABITACIO")
+@Table(name=Habitacio.TAULA)
 public class Habitacio {
-	
+	public static final String TAULA = "HABITACIO";
+
 	@Id
 	private int id;
 	

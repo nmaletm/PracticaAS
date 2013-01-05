@@ -12,8 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CLIENT")
+@Table(name=Client.TAULA)
 public class Client {
+	public static final String TAULA = "CLIENT";
 	
 	@Id
     @Column(name="dni", nullable = false, length = 10)

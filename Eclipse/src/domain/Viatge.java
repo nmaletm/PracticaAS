@@ -16,9 +16,10 @@ import javax.persistence.Table;
 import utility.Pair;
 
 @Entity
-@Table(name="VIATGE")
+@Table(name=Viatge.TAULA)
 public class Viatge {
-	
+	public static final String TAULA = "VIATGE";
+
 	@Id
 	private int id;
 	
