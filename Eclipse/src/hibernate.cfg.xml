@@ -5,32 +5,37 @@
   
 <hibernate-configuration>
     <session-factory>
-        <!-- Database connection settings -->
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <!-- <property name="connection.url">jdbc:mysql://mysql1.000webhost.com</property> -->
-        <property name="connection.url">jdbc:mysql://mysql1.000webhost.com</property>
-        <property name="connection.username">a4865764_as</property>
-        <property name="connection.password">practicaas0</property>
-         
+       <!-- Database connection settings -->
+        <property name="connection.driver_class">org.hsqldb.jdbc.JDBCDriver</property>
+        <property name="connection.url">jdbc:hsqldb:file:./target/data;shutdown=true;hsqldb.write_delay=false;</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password"></property>
+
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
-         
+
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
- 
+        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
- 
+
         <!-- Disable the second-level cache  -->
         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
-         
+
         <!-- Echo all executed SQL to stdout -->
-        <property name="show_sql">false</property>
-         
-        <!-- <property name="hbm2ddl.auto">validate</property> -->
-  		<property name="hbm2ddl.auto">create</property>
+        <property name="show_sql">true</property>
+
+        <!-- Update the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+          		
+		<mapping class="domain.Ciutat"/>         
+		<mapping class="domain.Client"/>         
+		<mapping class="domain.Habitacio"/>
 		<mapping class="domain.Hotel"/>         
-		<mapping class="domain.Habitacio"/>         
+		<mapping class="domain.HotelLowCost"/>         
+		<mapping class="domain.HotelSuperior"/>         
+		<mapping class="domain.Viatge"/>        
           
     </session-factory>
 </hibernate-configuration>
