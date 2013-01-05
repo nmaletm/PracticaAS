@@ -20,7 +20,7 @@ import utility.Pair;
 public class Ciutat {
 	
 	@Id
-    @Column(name="nom", nullable = false, length = 100)
+    @Column(name="nom", nullable = false, length = 60)
 	private String nom;
     
     @Column(name="descripcio", length = 100)
@@ -32,18 +32,11 @@ public class Ciutat {
 	@OneToMany(cascade=CascadeType.ALL)  
 	private List<Hotel> hotels;  
 	
-    public String getNom() {
-    	return nom;
-    }
-    
-    public Float getPreuVol() {
-    	return preuVol;
-    }
-    
+  
     public HashSet<Pair<String,Float>> getHotelsLliures(Date dataIni, Date dataFi) {
     	HashSet<Pair<String,Float>> resultat = new HashSet<Pair<String,Float>>();
     	
-    	Iterator<Hotel> it = hotels.iterator();
+    	Iterator<Hotel> it = getHotels().iterator();
     	while (it.hasNext()) {
     		Hotel h = it.next();
     		Boolean b = h.teHabitacioLliure(dataIni, dataFi);
@@ -54,5 +47,32 @@ public class Ciutat {
     		}
     	}
     	return resultat;
-    }    
+    }
+
+    public String getNom() {
+    	return nom;
+    }
+    
+    public Float getPreuVol() {
+    	return preuVol;
+    }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getDescripcio() {
+		return descripcio;
+	}
+
+	public void setDescripcio(String descripcio) {
+		this.descripcio = descripcio;
+	}
+
+	public List<Hotel> getHotels() {
+		return hotels;
+	}
+
+	public void setHotels(List<Hotel> hotels) {
+		this.hotels = hotels;
+	}    
 }

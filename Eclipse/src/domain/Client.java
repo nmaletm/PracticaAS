@@ -16,13 +16,13 @@ import javax.persistence.Table;
 public class Client {
 	
 	@Id
-    @Column(name="dni", nullable = false, length = 100)
+    @Column(name="dni", nullable = false, length = 10)
 	private String dni;
     
-    @Column(name="nom", length = 100)
+    @Column(name="nom", length = 60)
 	private String nom;
     
-    @Column(name="tlfn", length = 100)
+    @Column(name="tlfn", length = 10)
 	private String tlfn;
     
     @Column(name="nombreViatges")
@@ -32,7 +32,7 @@ public class Client {
 	private List<Viatge> viatges;  
 	
     public Boolean teViatge(Date dataIni, Date dataFi) {
-    	Iterator<Viatge> it = viatges.iterator();
+    	Iterator<Viatge> it = getViatges().iterator();
     	Boolean trobat = false;
     	while (it.hasNext() && !trobat)
     		trobat = it.next().interseccionaPeriode(dataIni, dataFi);
@@ -40,7 +40,47 @@ public class Client {
     }
     
     public void afegeixViatge (Viatge v) {
-    	viatges.add(v);
-    	nombreViatges++;
+    	getViatges().add(v);
+    	setNombreViatges(getNombreViatges() + 1);
     }
+
+	public List<Viatge> getViatges() {
+		return viatges;
+	}
+
+	public void setViatges(List<Viatge> viatges) {
+		this.viatges = viatges;
+	}
+
+	public Integer getNombreViatges() {
+		return nombreViatges;
+	}
+
+	public void setNombreViatges(Integer nombreViatges) {
+		this.nombreViatges = nombreViatges;
+	}
+
+	public String getTlfn() {
+		return tlfn;
+	}
+
+	public void setTlfn(String tlfn) {
+		this.tlfn = tlfn;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 }

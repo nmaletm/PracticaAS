@@ -3,13 +3,12 @@ package domain;
 import hibernate.HibernateUtil;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -19,7 +18,6 @@ import javax.persistence.Table;
 public class Habitacio {
 	
 	@Id
-	@GeneratedValue
 	private int id;
 	
     @Column(name="numero")
@@ -28,13 +26,16 @@ public class Habitacio {
 	@OneToMany(cascade=CascadeType.ALL)  
 	private List<Viatge> viatges;
 	
+	private Integer hotelID;
+	
     public Habitacio(){
-    	
+    	this.id = 0;
     }
     
     public Habitacio(Integer hotelID, Integer numero){
-    	/** TODO **/
+    	this.hotelID = hotelID;
     	this.numero = numero;
+    	this.id = this.hashCode();
     }
     
 	public Integer getNumero() {
@@ -66,4 +67,11 @@ public class Habitacio {
 		v.afegeixHabitacio(this);
 		HibernateUtil.update(v);
 	}
+	
+    public int hashCode(){
+        String sSurrogate =   String.format("%20d", this.hotelID)      // 20 chars
+                            + String.format("%20d", this.numero);      // 20 chars
+       
+        return sSurrogate.hashCode();
+    }
 }

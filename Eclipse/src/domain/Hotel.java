@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -17,26 +16,28 @@ import javax.persistence.Table;
 public class Hotel {
 	
 	@Id
-	@GeneratedValue
 	private int id;
 	
-    @Column(name="nom", nullable = false, length = 100)
+    @Column(name="nom", nullable = false, length = 60)
     private String nom;
     
     @Column(name="preu")
 	private float preu;
+    
+    private String nomCiutat;
 	
 	@OneToMany(cascade=CascadeType.ALL)  
 	private List<Habitacio> habitacions;
 	
 	public Hotel(){
-		
+		this.id = 0;
 	}
 	
 	public Hotel(String nomCiutat, String nom, float preu){
-		/** TODO **/
+		this.nomCiutat = nomCiutat;
 		this.nom = nom;
 		this.preu = preu;
+		this.id = this.hashCode();
 	}
 	
 	public float getPreu() {
@@ -96,4 +97,11 @@ public class Hotel {
 		
     	return hab;
 	}
+	
+    public int hashCode(){
+        String sSurrogate =   String.format("%60s", this.nomCiutat)      // 60 chars
+                            + String.format("%60s", this.nom);           // 60 chars
+       
+        return sSurrogate.hashCode();
+    }
 }

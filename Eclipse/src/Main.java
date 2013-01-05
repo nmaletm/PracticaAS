@@ -13,7 +13,7 @@ public class Main {
  
     public static void main(String args[]) {
          
-         
+        Integer id;
         // Lectura
         System.out.println("******* Lectura *******");
         List hotels = list();
@@ -26,18 +26,19 @@ public class Main {
 	        Hotel hotel = new Hotel("Barcelona","Rey Juan Carlos", 200);
 	        hotel = save(hotel);
 	        hotel = read(hotel.getId());
-	        System.out.printf("%d %s %s \n", hotel.getId(), hotel.getNom(), hotel.getPreu());
+	        id = hotel.getId();
+	        System.out.printf("%d %s %s \n", id, hotel.getNom(), hotel.getPreu());
 	    }
           
          
         // Update
         System.out.println("******* UPDATE *******");
-        Hotel hotel = read(1); // llegim l'hotel amb id 1
+        Hotel hotel = read(id); // llegim l'hotel amb id 1
         System.out.println("Name Before Update:" + hotel.getNom());
         hotel.setNom("Ma Cristina");
         update(hotel);  // guardem l'hotel modificat
          
-        hotel = read(1); // tornem a llegir hotel amb id 1
+        hotel = read(id); // tornem a llegir hotel amb id 1
         System.out.println("Name Aftere Update:" + hotel.getNom());
          
          

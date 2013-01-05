@@ -9,7 +9,6 @@ import java.util.HashSet;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,7 +20,6 @@ import utility.Pair;
 public class Viatge {
 	
 	@Id
-	@GeneratedValue
 	private int id;
 	
     @Column(name="dataInici", nullable = false)
@@ -68,5 +66,12 @@ public class Viatge {
     
     public void afegeixHabitacio(Habitacio h) {
     	habitacio = h;
+    }
+	
+    public int hashCode(){
+        String sSurrogate =   String.format("%20s", this.ciutat.getNom())      // 20 chars
+                            + String.format("%10s", this.client.getDni());     // 10 chars
+       
+        return sSurrogate.hashCode();
     }
 }
