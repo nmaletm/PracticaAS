@@ -1,6 +1,11 @@
 package data;
 
+import hibernate.HibernateUtil;
+
 import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import datainterface.CtrlHotel;
 import domain.Hotel;
@@ -18,19 +23,34 @@ public class CtrlHotelDB implements CtrlHotel {
 
 	@Override
 	public Hotel get(String nomCiutat, String nomHotel) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		 
+		Hotel res = (Hotel) session.get(Hotel.class, Hotel.hashCode(nomCiutat, nomHotel));
+		session.close();
+		
+		return res;
 	}
 
 	@Override
 	public Boolean exists(String nomCiutat, String nomHotel) {
-		// TODO Auto-generated method stub
-		return null;
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		 
+		Hotel res = (Hotel) session.get(Hotel.class, Hotel.hashCode(nomCiutat, nomHotel));
+		session.close();
+
+		return (res != null);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Hotel> all() {
-		// TODO Auto-generated method stub
-		return null;
+		SessionFactory sf = HibernateUtil.getSessionFactory();
+		Session session = sf.openSession();
+		 
+		List<Hotel> res = (List<Hotel>)session.createQuery("from "+Hotel.TAULA).list();
+		session.close();
+		return res;
 	}
 }

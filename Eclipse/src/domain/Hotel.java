@@ -100,8 +100,12 @@ public class Hotel {
 	}
 	
     public int hashCode(){
-        String sSurrogate =   String.format("%60s", this.nomCiutat)      // 60 chars
-                            + String.format("%60s", this.nom);           // 60 chars
+        return hashCode(this.nomCiutat, this.nom);
+    }
+    
+    public static int hashCode(String nomCiutat, String nom){
+        String sSurrogate =   String.format("%60s", nomCiutat)      // 60 chars
+                            + String.format("%60s", nom);           // 60 chars
        
         return sSurrogate.hashCode();
     }

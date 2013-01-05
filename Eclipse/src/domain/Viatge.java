@@ -44,6 +44,7 @@ public class Viatge {
     	dataFinal = dataFi;
     	ciutat = c;
     	cl.afegeixViatge(this);
+    	id = hashCode();
     	HibernateUtil.update(cl);
     }
     
@@ -70,8 +71,12 @@ public class Viatge {
     }
 	
     public int hashCode(){
-        String sSurrogate =   String.format("%20s", this.ciutat.getNom())      // 20 chars
-                            + String.format("%10s", this.client.getDni());     // 10 chars
+    	return hashCode(this.client.getDni(), this.dataInici);
+    }
+    
+    public static int hashCode(String dni, Date dataIni){
+        String sSurrogate =   String.format("%10s", dni)      // 20 chars
+                            + String.format("%D", dataIni);     // 10 chars
        
         return sSurrogate.hashCode();
     }

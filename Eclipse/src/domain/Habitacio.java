@@ -70,8 +70,12 @@ public class Habitacio {
 	}
 	
     public int hashCode(){
-        String sSurrogate =   String.format("%20d", this.hotelID)      // 20 chars
-                            + String.format("%20d", this.numero);      // 20 chars
+        return hashCode(this.hotelID, this.numero);
+    }
+    
+    public static int hashCode(Integer hotelID, Integer numero){
+        String sSurrogate =   String.format("%20d", hotelID)      // 20 chars
+                            + String.format("%20d", numero);      // 20 chars
        
         return sSurrogate.hashCode();
     }
