@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import domain.Ciutat;
 import domain.Hotel;
  
  
@@ -13,6 +14,15 @@ public class Main {
  
     public static void main(String args[]) {
          
+    	
+    	// Posem una ciutat:
+    	
+    	Ciutat c = new Ciutat();
+    	c.setNom("Ciutat Test");
+    	c.setDescripcio("bla bla bla");
+    	HibernateUtil.save(c);
+    	
+    	
         Integer id;
         // Lectura
         System.out.println("******* Lectura *******");

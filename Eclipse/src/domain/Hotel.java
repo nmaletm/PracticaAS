@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name=Hotel.TAULA)
 @Table(name=Hotel.TAULA)
 public class Hotel {
 	public static final String TAULA = "HOTEL";

@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 import utility.Pair;
 
-@Entity
+@Entity(name=Viatge.TAULA)
 @Table(name=Viatge.TAULA)
 public class Viatge {
 	public static final String TAULA = "VIATGE";

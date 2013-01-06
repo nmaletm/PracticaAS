@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name=HotelLowCost.TAULA)
 @Table(name=HotelLowCost.TAULA)
 public class HotelLowCost extends Hotel {
 	public static final String TAULA = "HOTELLOWCOST";

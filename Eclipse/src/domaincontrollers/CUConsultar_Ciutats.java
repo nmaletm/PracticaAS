@@ -2,18 +2,17 @@ package domaincontrollers;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.List;
 
+import utility.Pair;
 import datainterface.CtrlCiutats;
 import datainterface.DataControllerFactory;
 import domain.Ciutat;
 
-import utility.Pair;
-
 public class CUConsultar_Ciutats extends ControladorCasUs {
 	public HashSet<Pair<String,Float>> obteCiutats() throws Exception {
 		CtrlCiutats cc = DataControllerFactory.getInstance().getCiutatsController();
-		LinkedList<Ciutat> sc = (LinkedList<Ciutat>) cc.all();
+		List<Ciutat> sc = (List<Ciutat>) cc.all();
 		
 		if (sc.size() == 0) throw new Exception("noHiHaCiutats");
 		

@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name=Client.TAULA)
 @Table(name=Client.TAULA)
 public class Client {
 	public static final String TAULA = "CLIENT";
