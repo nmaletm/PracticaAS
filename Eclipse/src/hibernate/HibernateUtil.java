@@ -31,17 +31,8 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-    /*
-    private static Object read(int id) {
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session session = sf.openSession();
- 
-        Object o = session.get(Hotel.class, id);
-        session.close();
-        return o;
-    }
-    */
-    
+
+    // Inserta un objecte, si ja existeix tira exec
     public static Object save(Object o) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
@@ -57,6 +48,7 @@ public class HibernateUtil {
         return o;
     }
  
+    // Actualitza un objecte, si no existeix tira exec
     public static Object update(Object o) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
@@ -69,6 +61,21 @@ public class HibernateUtil {
          
         session.close();
         return o;
+ 
+    }
+    
+    // Esborra un objecte, si no existeix tira exec
+    public static void delete(Object o) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+ 
+        session.beginTransaction();
+ 
+        session.delete(o);
+         
+        session.getTransaction().commit();
+         
+        session.close();
  
     }
 }
