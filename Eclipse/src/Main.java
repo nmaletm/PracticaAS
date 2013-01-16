@@ -37,6 +37,7 @@ public class Main {
 					break;
 				case 'c':
 					posaCiutats();
+					posaClients();
 					break;
 				case 'r':
 					ContractarViatgeController.getInstance().inicia();
@@ -49,6 +50,29 @@ public class Main {
 		}
 
 
+	}
+
+	private static void posaClients(){
+	 	Client c = new Client();
+    	c.setNom("Marc");
+    	c.setDni("11111111");
+    	c.setTlfn("46513121");
+    	HibernateUtil.save(c);
+    	
+    	c.setNom("Andreu");
+    	c.setDni("22222222");
+    	c.setTlfn("54665421");
+    	HibernateUtil.save(c);
+    	
+    	c.setNom("Xavi");
+    	c.setDni("33333333");
+    	c.setTlfn("4654232");
+    	HibernateUtil.save(c);
+    	
+    	c.setNom("Nestor");
+    	c.setDni("44444444");
+    	c.setTlfn("56454512");
+    	HibernateUtil.save(c);	
 	}
 	
 	private static void posaCiutats(){
@@ -142,7 +166,7 @@ public class Main {
 	private static void printAjuda(){
 		System.out.println("Menu:");
 		System.out.println("A -> Ajuda");
-		System.out.println("C -> Posa les ciutats necessaries");
+		System.out.println("C -> Posa les dades necessaries");
 		System.out.println("D -> Esborrar totes les dades");
 		System.out.println("R -> Inicia UI programa ");
 		System.out.println("E -> Sortir");
