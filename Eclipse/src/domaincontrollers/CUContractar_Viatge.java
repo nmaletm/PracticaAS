@@ -78,4 +78,22 @@ public class CUContractar_Viatge extends ControladorCasUs {
 		
     	return ipa.pagament(dniClient, numTarg, (preuVol+preuHabitacio), dataCad);
 	}
+	
+	public Float getPreuVol() {
+		return preuVol;
+	}
+
+	public String getDni() {
+		return dniClient;
+	}
+
+	public Date getDataIni() {
+		return dataInici;
+	}
+
+	public Date getDataFin() {
+		return dataFinal;
+	}
+	
+	
 }
