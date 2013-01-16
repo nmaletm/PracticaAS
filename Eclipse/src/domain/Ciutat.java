@@ -75,5 +75,9 @@ public class Ciutat {
 
 	public void setHotels(List<Hotel> hotels) {
 		this.hotels = hotels;
+	}
+
+	public void setPreuVol(int preuVol) {
+		this.preuVol = preuVol;		
 	}    
 }
