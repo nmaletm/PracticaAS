@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -30,7 +31,7 @@ public class Ciutat {
     @Column(name="preuVol")
 	private float preuVol;
     
-	@OneToMany(cascade=CascadeType.ALL)  
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
 	private List<Hotel> hotels;  
 	
   

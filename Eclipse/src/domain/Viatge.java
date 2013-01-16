@@ -9,6 +9,7 @@ import java.util.HashSet;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -29,13 +30,13 @@ public class Viatge {
     @Column(name="dataFinal")
 	private Date dataFinal;
     
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
     private Client client;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private Ciutat ciutat;
     
-	@ManyToOne(optional = true, cascade = CascadeType.PERSIST)
+	@ManyToOne(optional = true, cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
 	private Habitacio habitacio;
 	
     public Viatge(Client cl, Date dataIni, Date dataFi, Ciutat c) {
