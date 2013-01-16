@@ -28,7 +28,8 @@ public class CtrlCiutatDB implements CtrlCiutats {
 		 
 		Ciutat res = (Ciutat) session.get(Ciutat.class, nom);
 		session.close();
-		
+		if(res == null)
+			throw new Exception("ciutatNoExisteix");
 		return res;
 	}
 
