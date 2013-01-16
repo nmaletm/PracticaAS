@@ -12,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ForeignKey;
 import org.hibernate.annotations.IndexColumn;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity(name=Hotel.TAULA)
 @Table(name=Hotel.TAULA)
@@ -37,7 +40,7 @@ public class Hotel {
 	public Hotel(){
 		this.id = 0;
 	}
-	
+
 	public Hotel(String nomCiutat, String nom, float preu){
 		this.nomCiutat = nomCiutat;
 		this.nom = nom;
@@ -56,6 +59,7 @@ public class Hotel {
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
+		this.id = this.hashCode();
 	}
 	
 	public int getId() {

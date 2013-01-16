@@ -14,7 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ForeignKey;
 import org.hibernate.annotations.IndexColumn;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import utility.Pair;
 

@@ -49,6 +49,7 @@ public class Habitacio {
 
 	public void setNumero(Integer numero) {
 		this.numero = numero;
+    	this.id = this.hashCode();
 	}
 
 	public int getId() {
