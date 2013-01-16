@@ -28,7 +28,8 @@ public class CtrlClientDB implements CtrlClient {
 		 
 		Client res = (Client) session.get(Client.class, nom);
 		session.close();
-		
+		if(res == null)
+			throw new Exception("clientNoExisteix");
 		return res;
 	}
 

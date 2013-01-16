@@ -7,9 +7,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.IndexColumn;
 
 @Entity(name=Client.TAULA)
 @Table(name=Client.TAULA)
@@ -29,7 +32,8 @@ public class Client {
     @Column(name="nombreViatges")
 	private Integer nombreViatges;
     
-	@OneToMany(cascade=CascadeType.ALL)  
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
+	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Viatge> viatges;  
 	
     public Boolean teViatge(Date dataIni, Date dataFi) {

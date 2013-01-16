@@ -28,7 +28,8 @@ public class CtrlHotelDB implements CtrlHotel {
 		 
 		Hotel res = (Hotel) session.get(Hotel.class, Hotel.hashCode(nomCiutat, nomHotel));
 		session.close();
-		
+		if(res == null)
+			throw new Exception("HotelNoExisteix");
 		return res;
 	}
 

@@ -30,7 +30,8 @@ public class CtrlViatgeDB implements CtrlViatge {
 		 
 		Viatge res = (Viatge) session.get(Viatge.class, Viatge.hashCode(dni, dataIni));
 		session.close();
-		
+		if(res == null)
+			throw new Exception("viatgeNoExisteix");
 		return res;
 	}
 

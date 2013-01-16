@@ -9,9 +9,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.IndexColumn;
 
 import utility.Pair;
 
@@ -30,7 +33,8 @@ public class Ciutat {
     @Column(name="preuVol")
 	private float preuVol;
     
-	@OneToMany(cascade=CascadeType.ALL)  
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER) 
+	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Hotel> hotels;  
 	
   
@@ -75,5 +79,9 @@ public class Ciutat {
 
 	public void setHotels(List<Hotel> hotels) {
 		this.hotels = hotels;
+	}
+
+	public void setPreuVol(int preuVol) {
+		this.preuVol = preuVol;		
 	}    
 }
