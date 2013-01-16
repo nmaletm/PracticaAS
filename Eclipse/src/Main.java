@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.List;
 
+import presentation.ContractarViatgeController;
+
 import datainterface.CtrlCiutats;
 import datainterface.CtrlClient;
 import datainterface.CtrlHotel;
@@ -37,8 +39,7 @@ public class Main {
 					posaCiutats();
 					break;
 				case 'r':
-					System.out.println("Això mostrarà la pantalla que hem de mostrar, però com que encara no la tinc"
-							+ " poso això per posar-ho més endevant...");
+					ContractarViatgeController.getInstance().inicia();
 					break;
 				default:
 					System.out.println("No has introduit una opció correcte!");

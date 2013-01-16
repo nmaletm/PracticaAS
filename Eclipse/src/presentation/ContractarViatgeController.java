@@ -24,10 +24,12 @@ public class ContractarViatgeController {
 	public ContractarViatgeController() {
 		controladorDomini = new CUContractar_Viatge();
 		view = new ContractarViatgeFrame();
-		view.mostra();
 	}
 	/*Singleton end*/
 	
+	public void inicia(){
+		view.mostra();
+	}
 	
 	public void prOkObteCiutats() {
 		HashSet<Pair<String, Float>> cjCiutats = new HashSet<Pair<String, Float>>();
