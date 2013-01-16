@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.IndexColumn;
+
 @Entity(name=Client.TAULA)
 @Table(name=Client.TAULA)
 public class Client {
@@ -31,6 +33,7 @@ public class Client {
 	private Integer nombreViatges;
     
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
+	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Viatge> viatges;  
 	
     public Boolean teViatge(Date dataIni, Date dataFi) {

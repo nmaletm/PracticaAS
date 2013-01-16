@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.IndexColumn;
+
 import utility.Pair;
 
 @Entity(name=Ciutat.TAULA)
@@ -31,7 +33,8 @@ public class Ciutat {
     @Column(name="preuVol")
 	private float preuVol;
     
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER) 
+	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Hotel> hotels;  
 	
   

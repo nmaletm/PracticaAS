@@ -30,13 +30,13 @@ public class Viatge {
     @Column(name="dataFinal")
 	private Date dataFinal;
     
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.PERSIST)
     private Client client;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Ciutat ciutat;
     
-	@ManyToOne(optional = true, cascade = CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@ManyToOne(optional = true, cascade = CascadeType.PERSIST)
 	private Habitacio habitacio;
 	
     public Viatge(Client cl, Date dataIni, Date dataFi, Ciutat c) {
