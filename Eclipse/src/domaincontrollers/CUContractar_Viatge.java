@@ -50,7 +50,7 @@ public class CUContractar_Viatge extends ControladorCasUs {
 		Boolean b = cl.teViatge(dataIni, dataFi);
 		if (b) throw new Exception("jaTeViatge");
 		
-		HibernateUtil.save(new Viatge(cl,dataIni,dataFi,c));
+		new Viatge(cl,dataIni,dataFi,c);
 		
 		float preu = c.getPreuVol();
 		preuVol = preu;
