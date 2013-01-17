@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.IndexColumn;
 
+/** Implementació de la classe Client del paquet Domain Model. **/
 @Entity(name=Client.TAULA)
 @Table(name=Client.TAULA)
 public class Client {

@@ -11,8 +11,9 @@ import datainterface.CtrlCiutats;
 import domain.Ciutat;
 
 public class CtrlCiutatDB implements CtrlCiutats {
-	private static CtrlCiutatDB singleton;
 	
+	/** Implementació del patró Singleton. **/
+	private static CtrlCiutatDB singleton;
 	public static CtrlCiutatDB getInstance() {
 	    if (singleton == null) 
 	    	singleton = new CtrlCiutatDB() {};

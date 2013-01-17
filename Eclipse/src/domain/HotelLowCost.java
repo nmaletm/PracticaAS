@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+/** Implementació de la classe HorelLowCost del paquet Domain Model. **/
 @Entity(name=HotelLowCost.TAULA)
 @Table(name=HotelLowCost.TAULA)
 public class HotelLowCost extends Hotel {

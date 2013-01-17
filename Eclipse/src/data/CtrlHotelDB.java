@@ -11,8 +11,9 @@ import datainterface.CtrlHotel;
 import domain.Hotel;
 
 public class CtrlHotelDB implements CtrlHotel {
-	private static CtrlHotelDB singleton;
 	
+	/** Implementació del patró Singleton. **/
+	private static CtrlHotelDB singleton;
 	public static CtrlHotelDB getInstance() {
 	    if (singleton == null) 
 	    	singleton = new CtrlHotelDB() {};

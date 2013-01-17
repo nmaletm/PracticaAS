@@ -1,8 +1,5 @@
 package domain;
 
-
-import hibernate.HibernateUtil;
-
 import java.util.Date;
 import java.util.HashSet;
 
@@ -15,6 +12,7 @@ import javax.persistence.Table;
 
 import utility.Pair;
 
+/** Implementació de la classe Viatge del paquet Domain Model. **/
 @Entity(name=Viatge.TAULA)
 @Table(name=Viatge.TAULA)
 public class Viatge {

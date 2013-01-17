@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.IndexColumn;
 
+/** Implementació de la classe Habitació del paquet Domain Model. **/
 @Entity(name=Habitacio.TAULA)
 @Table(name=Habitacio.TAULA)
 public class Habitacio {
