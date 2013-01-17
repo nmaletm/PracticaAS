@@ -36,7 +36,7 @@ public class Hotel {
 	private float preu;
 	
     /** Relació 1->3..* amb la classe Habitació, navegable en el sentit Hotel->Habitació. **/
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
+	@OneToMany(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)  
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Habitacio> habitacions;
 	

@@ -33,7 +33,7 @@ public class Habitacio {
 	private Integer numero;
 
     /** Relació 0..1->* amb la classe Viatge, navegable en ambdós sentits. **/
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
+	@OneToMany(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)  
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Viatge> viatges;
 	

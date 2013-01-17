@@ -9,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -32,15 +33,16 @@ public class Viatge {
 	private Date dataFinal;
     
     /** Relació *->1 amb la classe Client, navegable en ambdós sentits. **/
-	@ManyToOne(cascade = CascadeType.ALL) // PERSIST
+	@ManyToOne(cascade = CascadeType.REMOVE) // PERSIST
+	@JoinColumn(name="client_dni")
     private Client client;
 	
 	/** Relació *->1 amb la classe Ciutat, navegable en el sentit Viatge->Ciutat. **/
-	@ManyToOne(cascade = CascadeType.ALL) // PERSIST
+	@ManyToOne(cascade = CascadeType.REMOVE) // PERSIST
 	private Ciutat ciutat;
     
 	/** Relació *->0..1 amb la classe Habitació, navegable en ambdós sentits. **/
-	@ManyToOne(optional = true, cascade = CascadeType.ALL)
+	@ManyToOne(optional = true, cascade = CascadeType.REMOVE)
 	private Habitacio habitacio;
 	
 	/** Constructors **/
@@ -54,13 +56,8 @@ public class Viatge {
     	dataFinal = dataFi;
     	ciutat = c;
     	setId(hashCode());
-    	try {
-    		HibernateUtil.save(this);
-    	}
-    	catch (Exception e) {
-    			throw new Exception("viatgeJaExisteix");
-    	}
-    	
+    	HibernateUtil.save(this);
+   
     	cl.afegeixViatge(this);
     }
     
@@ -102,7 +99,7 @@ public class Viatge {
     public static int hashCode(String dni, Date dataIni){
         String sSurrogate =   String.format("%10s", dni)      // 20 chars
                             + String.format("%10d", dataIni.getTime());     // 10 chars
-       
+        System.out.println("ID viatge->"+sSurrogate.hashCode());
         return sSurrogate.hashCode();
     }
 

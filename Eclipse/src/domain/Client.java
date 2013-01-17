@@ -11,10 +11,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.IndexColumn;
 
 /** Implementació de la classe Client del paquet Domain Model. **/
 @Entity(name=Client.TAULA)
@@ -37,7 +36,9 @@ public class Client {
 	private Integer nombreViatges;
     
     /** Constructors **/
-    public Client() {}
+    public Client() {
+    	
+    }
     
     public Client(String cdni, String cnom, String ctlfn, List<Viatge> cviatges) {
     	dni = cdni;
@@ -49,8 +50,9 @@ public class Client {
     }
     
     /** Relació 1->* amb la classe Viatge, navegable en ambdós sentits. **/
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
-	@IndexColumn(name="INDEX_COL_"+TAULA)
+	@OneToMany(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)  
+//	@IndexColumn(name="INDEX_COL_"+TAULA)
+	@JoinColumn(name="client_dni")
 	private List<Viatge> viatges;  
 	
 	/** Implementació de l'operació téViatge.

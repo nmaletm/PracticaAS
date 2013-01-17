@@ -43,7 +43,7 @@ public class HibernateUtil {
         session.save(o);
         
         session.getTransaction().commit();
-         
+        
         session.close();
  
         return o;
@@ -59,7 +59,7 @@ public class HibernateUtil {
         session.merge(o);
          
         session.getTransaction().commit();
-         
+
         session.close();
         return o;
  
@@ -75,7 +75,7 @@ public class HibernateUtil {
         session.delete(o);
          
         session.getTransaction().commit();
-         
+
         session.close();
  
     }
@@ -90,7 +90,7 @@ public class HibernateUtil {
 	    Query query = session.createQuery(hql);
 	    int res =  query.executeUpdate();
         session.getTransaction().commit();
-        
+
         session.close();
         
         return res;
