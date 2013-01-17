@@ -48,13 +48,18 @@ public class Viatge {
 		setId(0);
 	}
 	
-    public Viatge(Client cl, Date dataIni, Date dataFi, Ciutat c) {
+    public Viatge(Client cl, Date dataIni, Date dataFi, Ciutat c) throws Exception {
     	client = cl;
     	dataInici = dataIni;
     	dataFinal = dataFi;
     	ciutat = c;
     	setId(hashCode());
-    	HibernateUtil.save(this);
+    	try {
+    		HibernateUtil.save(this);
+    	}
+    	catch (Exception e) {
+    			throw new Exception("viatgeJaExisteix");
+    	}
     	
     	cl.afegeixViatge(this);
     }
