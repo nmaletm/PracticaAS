@@ -19,6 +19,7 @@ import domain.Viatge;
 
 import utility.Pair;
 
+/** Implementació de la classe CUContractar_Viatge del paquet Domain Controllers. **/
 public class CUContractar_Viatge extends ControladorCasUs {
 	private Float preuVol;
 	private String dniClient;

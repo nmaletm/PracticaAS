@@ -1,5 +1,7 @@
 package domain;
 
+import hibernate.HibernateUtil;
+
 import java.util.Date;
 import java.util.HashSet;
 
@@ -52,7 +54,7 @@ public class Viatge {
     	ciutat = c;
     	cl.afegeixViatge(this);
     	setId(hashCode());
-    	//HibernateUtil.save(cl);
+    	HibernateUtil.update(cl);
     }
     
     /** Implementació de l'operació interseccionaPeriode.

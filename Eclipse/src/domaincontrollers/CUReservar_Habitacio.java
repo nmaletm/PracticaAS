@@ -14,6 +14,7 @@ import domain.Habitacio;
 import domain.Hotel;
 import domain.Viatge;
 
+/** Implementació de la classe CUReservar_Habitacio del paquet Domain Controllers. **/
 public class CUReservar_Habitacio extends ControladorCasUs {
 	private Viatge viatge;
 	private Date dataInici;

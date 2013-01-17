@@ -9,6 +9,7 @@ import datainterface.CtrlCiutats;
 import datainterface.DataControllerFactory;
 import domain.Ciutat;
 
+/** Implementació de la classe CUConsultar_Ciutats del paquet Domain Controllers. **/
 public class CUConsultar_Ciutats extends ControladorCasUs {
 	public HashSet<Pair<String,Float>> obteCiutats() throws Exception {
 		CtrlCiutats cc = DataControllerFactory.getInstance().getCiutatsController();
