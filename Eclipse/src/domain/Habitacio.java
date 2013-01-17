@@ -16,22 +16,26 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.IndexColumn;
 
+/** Implementació de la classe Habitació del paquet Domain Model. **/
 @Entity(name=Habitacio.TAULA)
 @Table(name=Habitacio.TAULA)
 public class Habitacio {
 	public static final String TAULA = "HABITACIO";
 
+	/** Id Artificial **/
 	@Id
 	private int id;
 	
+	private Integer hotelID;
+	
+	/** Atributs de la Classe **/
     @Column(name="numero")
 	private Integer numero;
 
+    /** Relació 0..1->* amb la classe Viatge, navegable en ambdós sentits. **/
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Viatge> viatges;
-	
-	private Integer hotelID;
 	
     public Habitacio(){
     	this.id = 0;
@@ -43,22 +47,8 @@ public class Habitacio {
     	this.id = this.hashCode();
     }
     
-	public Integer getNumero() {
-		return numero;
-	}
-
-	public void setNumero(Integer numero) {
-		this.numero = numero;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	/** Implementació de l'operació estaLliure.
+	 *  Retorna cert si l'Habitacio no està associada a cap Viatge en el període dataIni-dataFi. **/
 	public Boolean estaLliure(Date dataIni, Date dataFi) {
 		Boolean trobat = true;
 		Iterator<Viatge> it = viatges.iterator();
@@ -67,12 +57,25 @@ public class Habitacio {
     	return trobat;	
 	}
 	
+	/** Implementació de l'operació afegeixViatge.
+	 *  Afegeix el Viatge v al conjunt de viatges de l'Habitació. **/
 	public void afegeixViatge(Viatge v) {
 		viatges.add(v);
+		HibernateUtil.update(this);
 		v.afegeixHabitacio(this);
-		HibernateUtil.update(v);
 	}
 	
+    /** Getters i Setters dels atributs **/
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+    	this.id = this.hashCode();
+	}
+
+	/** Generació de l'Id Artificial **/
     public int hashCode(){
         return hashCode(this.hotelID, this.numero);
     }
@@ -83,4 +86,12 @@ public class Habitacio {
        
         return sSurrogate.hashCode();
     }
+    
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 }

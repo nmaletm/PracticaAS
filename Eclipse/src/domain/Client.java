@@ -1,5 +1,7 @@
 package domain;
 
+import hibernate.HibernateUtil;
+
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -14,11 +16,13 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.IndexColumn;
 
+/** Implementació de la classe Client del paquet Domain Model. **/
 @Entity(name=Client.TAULA)
 @Table(name=Client.TAULA)
 public class Client {
 	public static final String TAULA = "CLIENT";
 	
+	/** Atributs de la Classe **/
 	@Id
     @Column(name="dni", nullable = false, length = 10)
 	private String dni;
@@ -32,10 +36,13 @@ public class Client {
     @Column(name="nombreViatges")
 	private Integer nombreViatges;
     
+    /** Relació 1->* amb la classe Viatge, navegable en ambdós sentits. **/
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Viatge> viatges;  
 	
+	/** Implementació de l'operació téViatge.
+	 *  Retorna cert si el client té algun Viatge comprès en el període dataIni-dataFi, fals en cas contrari. **/
     public Boolean teViatge(Date dataIni, Date dataFi) {
     	Iterator<Viatge> it = getViatges().iterator();
     	Boolean trobat = false;
@@ -44,11 +51,15 @@ public class Client {
     	return trobat;
     }
     
+	/** Implementació de l'operació afageixViatge.
+	 *  Afegeix el Viatge v al conjunt de viatges del Client. **/
     public void afegeixViatge (Viatge v) {
     	getViatges().add(v);
     	setNombreViatges(getNombreViatges() + 1);
+    	HibernateUtil.update(this);
     }
 
+    /** Getters i Setters dels atributs **/
 	public List<Viatge> getViatges() {
 		return viatges;
 	}

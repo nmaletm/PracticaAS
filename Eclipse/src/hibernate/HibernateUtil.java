@@ -1,5 +1,6 @@
 package hibernate;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -78,4 +79,21 @@ public class HibernateUtil {
         session.close();
  
     }
+    
+    public static int emptyTable(String myTable){
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+
+        session.beginTransaction();
+        
+	    String hql = String.format("delete from %s",myTable);
+	    Query query = session.createQuery(hql);
+	    int res =  query.executeUpdate();
+        session.getTransaction().commit();
+        
+        session.close();
+        
+        return res;
+        
+	}
 }

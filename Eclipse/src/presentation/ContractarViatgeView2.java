@@ -119,7 +119,7 @@ public class ContractarViatgeView2 extends ContractarViatgeViewTemplate {
 					dataIni = dateFormat.parse(tDataIni);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 					messageArea.setText("Format de la data d'inici incorrecte");
 					
 				}
@@ -129,7 +129,7 @@ public class ContractarViatgeView2 extends ContractarViatgeViewTemplate {
 					dataFi = dateFormat.parse(tDataFi);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 					messageArea.setText("Format de la data de tornada incorrete");
 				}
 				

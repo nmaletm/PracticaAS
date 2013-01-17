@@ -12,8 +12,9 @@ import datainterface.CtrlViatge;
 import domain.Viatge;
 
 public class CtrlViatgeDB implements CtrlViatge {
-	private static CtrlViatgeDB singleton;
 	
+	/** Implementació del patró Singleton. **/
+	private static CtrlViatgeDB singleton;
 	public static CtrlViatgeDB getInstance() {
 	    if (singleton == null) 
 	    	singleton = new CtrlViatgeDB() {};
@@ -21,7 +22,6 @@ public class CtrlViatgeDB implements CtrlViatge {
 	}
 	
 	public CtrlViatgeDB() {}
-
 	
 	@Override
 	public Viatge get(String dni, Date dataIni) throws Exception {

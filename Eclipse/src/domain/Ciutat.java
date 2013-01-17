@@ -1,6 +1,5 @@
 package domain;
 
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -18,11 +17,13 @@ import org.hibernate.annotations.IndexColumn;
 
 import utility.Pair;
 
+/** Implementació de la classe Ciutat del paquet Domain Model. **/
 @Entity(name=Ciutat.TAULA)
 @Table(name=Ciutat.TAULA)
 public class Ciutat {
 	public static final String TAULA = "CIUTAT";
 
+	/** Atributs de la Classe **/
 	@Id
     @Column(name="nom", nullable = false, length = 60)
 	private String nom;
@@ -33,11 +34,13 @@ public class Ciutat {
     @Column(name="preuVol")
 	private float preuVol;
     
+    /** Relació 1->1..* amb la classe Hotel, navegable en el sentit Ciutat->Hotel. **/
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER) 
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Hotel> hotels;  
 	
-  
+	/** Implementació de l'operació getHotelsLliures.
+	 *  Retorna els hotels d'aquesta ciutat que tenen una o més habitacions lliures en el període dataIni-dataFi. **/
     public HashSet<Pair<String,Float>> getHotelsLliures(Date dataIni, Date dataFi) {
     	HashSet<Pair<String,Float>> resultat = new HashSet<Pair<String,Float>>();
     	
@@ -54,15 +57,21 @@ public class Ciutat {
     	return resultat;
     }
 
+    /** Getters i Setters dels atributs **/
     public String getNom() {
     	return nom;
     }
     
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
     public Float getPreuVol() {
     	return preuVol;
     }
-	public void setNom(String nom) {
-		this.nom = nom;
+    
+	public void setPreuVol(int preuVol) {
+		this.preuVol = preuVol;		
 	}
 
 	public String getDescripcio() {
@@ -80,8 +89,4 @@ public class Ciutat {
 	public void setHotels(List<Hotel> hotels) {
 		this.hotels = hotels;
 	}
-
-	public void setPreuVol(int preuVol) {
-		this.preuVol = preuVol;		
-	}    
 }

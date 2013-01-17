@@ -14,22 +14,26 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.IndexColumn;
 
+/** Implementació de la classe Hotel del paquet Domain Model. **/
 @Entity(name=Hotel.TAULA)
 @Table(name=Hotel.TAULA)
 public class Hotel {
 	public static final String TAULA = "HOTEL";
-
+	
+	/** Id Artificial **/
 	@Id
 	private int id;
 	
+	private String nomCiutat;
+	
+	/** Atributs de la Classe **/
     @Column(name="nom", nullable = false, length = 60)
     private String nom;
     
     @Column(name="preu")
 	private float preu;
-    
-    private String nomCiutat;
 	
+    /** Relació 1->3..* amb la classe Habitació, navegable en el sentit Hotel->Habitació. **/
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Habitacio> habitacions;
@@ -37,7 +41,7 @@ public class Hotel {
 	public Hotel(){
 		this.id = 0;
 	}
-	
+
 	public Hotel(String nomCiutat, String nom, float preu){
 		this.nomCiutat = nomCiutat;
 		this.nom = nom;
@@ -45,25 +49,6 @@ public class Hotel {
 		this.id = this.hashCode();
 	}
 	
-	public float getPreu() {
-		return preu;
-	}
-	public void setPreu(float preu) {
-		this.preu = preu;
-	}
-	public String getNom() {
-		return nom;
-	}
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public List<Habitacio> getHabitacions() {
 		return habitacions;
 	}
@@ -71,10 +56,15 @@ public class Hotel {
 		this.habitacions = habitacions;
 	}
 
+    /** Implementació de l'operació obteVariacioPreu.
+	 *  Retorna la variació de preu associada a aquest Hotel.
+	 *  Implementació del patró plantilla. **/
 	public Float obteVariacioPreu() {
 		return (float) 0;
 	}
 	
+	/** Implementació de l'operació teHabitacioLliure.
+	 *  Retorna cert si l'Hotel té alguna Habitacio no ocupada en el període dataIni-dataFi. **/
 	public Boolean teHabitacioLliure(Date dataIni, Date dataFi) {
 		Boolean trobat = false;
 		Iterator<Habitacio> it = habitacions.iterator();
@@ -84,11 +74,15 @@ public class Hotel {
     	return trobat;
 	}
 	
+	/** Implementació de l'operació calculaPreuHabitacio.
+	 *  Retorna el preu de llogar una Habitacio d'aquest Hotel pel període dataIni-dataFi. **/
 	public Float calculaPreuHabitacio(Date dataIni, Date dataFi) {
 		float var = obteVariacioPreu();
     	return (preu+var)*((dataFi.getTime()-dataIni.getTime())/1000/60/60/24);	
 	}
 	
+	/** Implementació de l'operació getHabitacioLliure.
+	 *  Retorna una Habitacio lliure d'aquest Hotel pel període dataIni-dataFi. **/
 	public Habitacio getHabitacioLliure(Date dataIni, Date dataFi) {
 		Boolean trobat = false;
 		Habitacio hab = null;
@@ -102,7 +96,26 @@ public class Hotel {
 		
     	return hab;
 	}
+	    
+	/** Getters i Setters dels atributs **/
+	public float getPreu() {
+		return preu;
+	}
 	
+	public void setPreu(float preu) {
+		this.preu = preu;
+	}
+	
+	public String getNom() {
+		return nom;
+	}
+	
+	public void setNom(String nom) {
+		this.nom = nom;
+		this.id = this.hashCode();
+	}
+	
+	/** Generació de l'Id Artificial **/
     public int hashCode(){
         return hashCode(this.nomCiutat, this.nom);
     }
@@ -113,4 +126,12 @@ public class Hotel {
        
         return sSurrogate.hashCode();
     }
+    
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 }

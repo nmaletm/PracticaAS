@@ -11,8 +11,9 @@ import datainterface.CtrlClient;
 import domain.Client;
 
 public class CtrlClientDB implements CtrlClient {
-	private static CtrlClientDB singleton;
 	
+	/** Implementació del patró Singleton. **/
+	private static CtrlClientDB singleton;
 	public static CtrlClientDB getInstance() {
 	    if (singleton == null) 
 	    	singleton = new CtrlClientDB() {};
