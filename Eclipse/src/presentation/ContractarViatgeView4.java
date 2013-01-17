@@ -109,7 +109,7 @@ public class ContractarViatgeView4 extends ContractarViatgeViewTemplate {
 					ContractarViatgeController.getInstance().prOkPagarViatge(textNumTar.getText(), dateFormat.parse(textCadTar.getText()));
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 					messageArea.setText("Format de la data de caducitat incorrete");
 				}
 				
