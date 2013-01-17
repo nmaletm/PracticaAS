@@ -91,8 +91,11 @@ public class CUContractar_Viatge extends ControladorCasUs {
 	 *  de la targeta i el preu total del viatge. Retorna cert si s'ha pogut realitzar la operació, fals en cas contrari. **/
 	public Boolean pagament(String numTarg, Date dataCad) throws Exception {
 		IPagamentAdapter ipa = AdapterFactory.getInstance().getPagamentAdapter();
-		
-    	return ipa.pagament(dniClient, numTarg, (preuVol+preuHabitacio), dataCad);
+		float preu = preuVol;
+		if(preuHabitacio != null){
+			preu += preuHabitacio;
+		}
+    	return ipa.pagament(dniClient, numTarg, preu, dataCad);
 	}
 	
 	/** Getters i Setters dels atributs **/

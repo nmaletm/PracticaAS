@@ -74,12 +74,12 @@ public class ContractarViatgeFrame extends JFrame {
 	public void mostraPagarViatge(String dniCl, Float preuTotal) {
 
 		canviPanel(new ContractarViatgeView4(dniCl, preuTotal));
-		setSize(300,325);
+		setSize(350,325);
 	}
 	
 	public void mostraMissatgeFi() {
 		canviPanel(new ContractarViatgeView5());
-		setSize(300,200);
+		setSize(400,200);
 	}
 	
 	public void tancar() {
