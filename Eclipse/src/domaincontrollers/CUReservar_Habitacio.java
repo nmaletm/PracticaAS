@@ -53,6 +53,5 @@ public class CUReservar_Habitacio extends ControladorCasUs {
 		Habitacio hab = h.getHabitacioLliure(dataInici, dataFinal);
 		
 		hab.afegeixViatge(viatge);
-		HibernateUtil.update(hab);
 	}
 }

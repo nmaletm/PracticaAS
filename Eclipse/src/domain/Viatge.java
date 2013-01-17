@@ -52,9 +52,10 @@ public class Viatge {
     	dataInici = dataIni;
     	dataFinal = dataFi;
     	ciutat = c;
-    	cl.afegeixViatge(this);
     	setId(hashCode());
-    	HibernateUtil.update(cl);
+    	HibernateUtil.save(this);
+    	
+    	cl.afegeixViatge(this);
     }
     
     /** Implementació de l'operació interseccionaPeriode.
@@ -75,6 +76,7 @@ public class Viatge {
 	 *  Assigna l'Habitacio h a aquest Viatge. **/
     public void afegeixHabitacio(Habitacio h) {
     	habitacio = h;
+    	HibernateUtil.update(this);
     }
     
     /** Implementació de l'operació getNomCiutat.

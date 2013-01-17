@@ -61,8 +61,8 @@ public class Habitacio {
 	 *  Afegeix el Viatge v al conjunt de viatges de l'Habitació. **/
 	public void afegeixViatge(Viatge v) {
 		viatges.add(v);
+		HibernateUtil.update(this);
 		v.afegeixHabitacio(this);
-		HibernateUtil.update(v);
 	}
 	
     /** Getters i Setters dels atributs **/

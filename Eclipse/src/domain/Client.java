@@ -1,5 +1,7 @@
 package domain;
 
+import hibernate.HibernateUtil;
+
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -54,6 +56,7 @@ public class Client {
     public void afegeixViatge (Viatge v) {
     	getViatges().add(v);
     	setNombreViatges(getNombreViatges() + 1);
+    	HibernateUtil.update(this);
     }
 
     /** Getters i Setters dels atributs **/
