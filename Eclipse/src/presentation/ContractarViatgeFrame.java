@@ -42,7 +42,7 @@ public class ContractarViatgeFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public ContractarViatgeFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new ContractarViatgeView1();
 		setSize(300, 200);
@@ -83,7 +83,7 @@ public class ContractarViatgeFrame extends JFrame {
 	}
 	
 	public void tancar() {
-		System.exit(0);
+		dispose();
 	}
 	
 	private void canviPanel(ContractarViatgeViewTemplate panel) {
