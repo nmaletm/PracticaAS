@@ -67,9 +67,7 @@ public class Viatge {
     /** Implementació de l'operació interseccionaPeriode.
 	 *  Retorna cert si el període del Viatge intersecciona amb el període dataIni-dataFi, fals en altre cas. **/
     public Boolean interseccionaPeriode(Date dataIni, Date dataFi) {
-    	return ((dataInici.before(dataIni) && dataFinal.after(dataIni)) || 
-    			(dataInici.before(dataFi) && dataFinal.after(dataFi)) ||
-    			(dataInici.after(dataFi) && dataFinal.before(dataFi)));
+    	return ((dataInici.before(dataFi) && dataIni.before(dataFinal)));
     }
     
     /** Implementació de l'operació getHotelsLliures.
