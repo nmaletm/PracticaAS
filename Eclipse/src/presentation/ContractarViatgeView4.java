@@ -66,7 +66,7 @@ public class ContractarViatgeView4 extends ContractarViatgeViewTemplate {
 		panel_1.add(lblNewLabel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JLabel lblPreu = new JLabel(preuTotal.toString()+"€");
+		JLabel lblPreu = new JLabel(preuTotal.toString()+"e");
 		panel_1.add(lblPreu);
 		
 		JLabel lblNewLabel_1 = new JLabel("DNI client");
@@ -105,6 +105,12 @@ public class ContractarViatgeView4 extends ContractarViatgeViewTemplate {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				DateFormat dateFormat = new SimpleDateFormat("MM/yy");
+				if ("".equals(textNumTar.getText())) {
+					messageArea.setText("No has introduit cap numero de tarjeta");
+				}
+				else if ("".equals(textCadTar.getText())) {
+					messageArea.setText("No has introduit la data de caducitat");
+				}
 				try {
 					ContractarViatgeController.getInstance().prOkPagarViatge(textNumTar.getText(), dateFormat.parse(textCadTar.getText()));
 				} catch (ParseException e) {

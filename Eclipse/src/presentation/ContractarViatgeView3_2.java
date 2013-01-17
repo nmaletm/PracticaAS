@@ -87,7 +87,7 @@ public class ContractarViatgeView3_2 extends ContractarViatgeViewTemplate {
 		String[] h = new String[hotels.size()];
 		int i=0;
 		for (Pair<String, Float> c : hotels) {
-			h[i++] = (c.getFirst() + " " + c.getSecond().toString()+"€");
+			h[i++] = (c.getFirst() + " " + c.getSecond().toString()+"e");
 			
 		}
 		comboBox = new JComboBox(h);

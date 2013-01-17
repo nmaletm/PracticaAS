@@ -92,7 +92,7 @@ public class ContractarViatgeView2 extends ContractarViatgeViewTemplate {
 		String[] ciutats = new String[cjCiutats.size()];
 		int i = 0;
 		for (Pair<String, Float> c : cjCiutats) {
-			ciutats[i++] = (c.getFirst() + " " + c.getSecond().toString() + "€");
+			ciutats[i++] = (c.getFirst() + " " + c.getSecond().toString() + "e");
 		}
 		comboBox = new JComboBox(ciutats);
 		panel_2.add(comboBox);

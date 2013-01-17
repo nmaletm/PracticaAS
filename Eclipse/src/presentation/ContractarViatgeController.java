@@ -7,9 +7,11 @@ import java.util.HashSet;
 import utility.Pair;
 import domaincontrollers.CUContractar_Viatge;
 
+/** Implementacio de la classe ContractarViatgeController del paquet presentation. **/
 public class ContractarViatgeController {
-	
+	/** Instancia del controlador de domini del cas d'us Contractar Viatge. **/
 	private CUContractar_Viatge controladorDomini;
+	/** Instancia de la vista. **/
 	private ContractarViatgeFrame view;
 	
 	/*Singleton start*/
