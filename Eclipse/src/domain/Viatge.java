@@ -17,22 +17,27 @@ import utility.Pair;
 @Table(name=Viatge.TAULA)
 public class Viatge {
 	public static final String TAULA = "VIATGE";
-
+	
+	/** Id Artificial **/
 	@Id
 	private int id;
 	
+	/** Atributs de la Classe **/
     @Column(name="dataInici", nullable = false)
 	private Date dataInici;
     
     @Column(name="dataFinal")
 	private Date dataFinal;
     
+    /** Relació *->1 amb la classe Client, navegable en ambdós sentits. **/
 	@ManyToOne(cascade = CascadeType.ALL) // PERSIST
     private Client client;
 	
+	/** Relació *->1 amb la classe Ciutat, navegable en el sentit Viatge->Ciutat. **/
 	@ManyToOne(cascade = CascadeType.ALL) // PERSIST
 	private Ciutat ciutat;
     
+	/** Relació *->0..1 amb la classe Habitació, navegable en ambdós sentits. **/
 	@ManyToOne(optional = true, cascade = CascadeType.ALL)
 	private Habitacio habitacio;
 	

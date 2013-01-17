@@ -10,6 +10,7 @@ import javax.persistence.Table;
 public class HotelSuperior extends Hotel {
 	public static final String TAULA = "HOTELSUPERIOR";
 	
+	/** Atributs de la Classe **/
     @Column(name="recarrec")
 	private float recarrec;
     

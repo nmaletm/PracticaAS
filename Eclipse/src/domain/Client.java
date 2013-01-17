@@ -20,6 +20,7 @@ import org.hibernate.annotations.IndexColumn;
 public class Client {
 	public static final String TAULA = "CLIENT";
 	
+	/** Atributs de la Classe **/
 	@Id
     @Column(name="dni", nullable = false, length = 10)
 	private String dni;
@@ -33,6 +34,7 @@ public class Client {
     @Column(name="nombreViatges")
 	private Integer nombreViatges;
     
+    /** Relació 1->* amb la classe Viatge, navegable en ambdós sentits. **/
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Viatge> viatges;  

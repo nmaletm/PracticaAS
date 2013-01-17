@@ -22,17 +22,20 @@ import org.hibernate.annotations.IndexColumn;
 public class Habitacio {
 	public static final String TAULA = "HABITACIO";
 
+	/** Id Artificial **/
 	@Id
 	private int id;
 	
+	private Integer hotelID;
+	
+	/** Atributs de la Classe **/
     @Column(name="numero")
 	private Integer numero;
 
+    /** Relació 0..1->* amb la classe Viatge, navegable en ambdós sentits. **/
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Viatge> viatges;
-	
-	private Integer hotelID;
 	
     public Habitacio(){
     	this.id = 0;

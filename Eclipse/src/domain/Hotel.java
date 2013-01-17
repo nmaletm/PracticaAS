@@ -19,18 +19,21 @@ import org.hibernate.annotations.IndexColumn;
 @Table(name=Hotel.TAULA)
 public class Hotel {
 	public static final String TAULA = "HOTEL";
-
+	
+	/** Id Artificial **/
 	@Id
 	private int id;
 	
+	private String nomCiutat;
+	
+	/** Atributs de la Classe **/
     @Column(name="nom", nullable = false, length = 60)
     private String nom;
     
     @Column(name="preu")
 	private float preu;
-    
-    private String nomCiutat;
 	
+    /** Relació 1->3..* amb la classe Habitació, navegable en el sentit Hotel->Habitació. **/
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Habitacio> habitacions;

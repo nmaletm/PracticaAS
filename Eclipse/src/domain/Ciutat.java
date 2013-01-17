@@ -34,7 +34,7 @@ public class Ciutat {
     @Column(name="preuVol")
 	private float preuVol;
     
-    /** Relació 1->1..* amb la classe Hotel, navegable en el sentit Ciutat-Hotel. **/
+    /** Relació 1->1..* amb la classe Hotel, navegable en el sentit Ciutat->Hotel. **/
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER) 
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Hotel> hotels;  
