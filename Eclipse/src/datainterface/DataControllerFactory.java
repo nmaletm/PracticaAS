@@ -2,6 +2,7 @@ package datainterface;
 
 import data.CtrlCiutatDB;
 import data.CtrlClientDB;
+import data.CtrlHabitacioDB;
 import data.CtrlHotelDB;
 import data.CtrlViatgeDB;
 
@@ -11,7 +12,8 @@ public class DataControllerFactory {
 	private static CtrlClient ctrlclient;
 	private static CtrlHotel ctrlhotel;
 	private static CtrlViatge ctrlviatge;
-    
+	private static CtrlHabitacio ctrlhabitacio;
+	
 	public static DataControllerFactory getInstance() {
         if (singleton == null) 
         	singleton = new DataControllerFactory() {};
@@ -42,5 +44,11 @@ public class DataControllerFactory {
 		if (ctrlviatge == null)
 			ctrlviatge = CtrlViatgeDB.getInstance();
 		return ctrlviatge;
+	}
+	
+	public CtrlHabitacio getHabitacioController() {
+		if (ctrlhabitacio == null)
+			ctrlhabitacio = CtrlHabitacioDB.getInstance();
+		return ctrlhabitacio;
 	}
 }

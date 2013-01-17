@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -9,6 +11,11 @@ import javax.persistence.Table;
 @Table(name=HotelSuperior.TAULA)
 public class HotelSuperior extends Hotel {
 	public static final String TAULA = "HOTELSUPERIOR";
+	
+	/** Constructors **/
+	public HotelSuperior(String hNomCiutat, String hNom, float hPreu, List<Habitacio> hHabitacions) throws Exception {
+		super(hNomCiutat, hNom, hPreu, hHabitacions);
+	}
 	
 	/** Atributs de la Classe **/
     @Column(name="recarrec")

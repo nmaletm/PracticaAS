@@ -36,6 +36,18 @@ public class Client {
     @Column(name="nombreViatges")
 	private Integer nombreViatges;
     
+    /** Constructors **/
+    public Client() {}
+    
+    public Client(String cdni, String cnom, String ctlfn, List<Viatge> cviatges) {
+    	dni = cdni;
+    	nom = cnom;
+    	tlfn = ctlfn;
+    	nombreViatges = 0;
+    	viatges = cviatges;
+    	HibernateUtil.save(this);
+    }
+    
     /** Relació 1->* amb la classe Viatge, navegable en ambdós sentits. **/
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)  
 	@IndexColumn(name="INDEX_COL_"+TAULA)
@@ -56,7 +68,6 @@ public class Client {
     public void afegeixViatge (Viatge v) {
     	getViatges().add(v);
     	setNombreViatges(getNombreViatges() + 1);
-    	HibernateUtil.update(this);
     }
 
     /** Getters i Setters dels atributs **/
@@ -66,6 +77,7 @@ public class Client {
 
 	public void setViatges(List<Viatge> viatges) {
 		this.viatges = viatges;
+		HibernateUtil.update(this);
 	}
 
 	public Integer getNombreViatges() {
@@ -74,6 +86,7 @@ public class Client {
 
 	public void setNombreViatges(Integer nombreViatges) {
 		this.nombreViatges = nombreViatges;
+		HibernateUtil.update(this);
 	}
 
 	public String getTlfn() {
@@ -82,6 +95,7 @@ public class Client {
 
 	public void setTlfn(String tlfn) {
 		this.tlfn = tlfn;
+		HibernateUtil.update(this);
 	}
 
 	public String getNom() {
@@ -90,6 +104,7 @@ public class Client {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+		HibernateUtil.update(this);
 	}
 
 	public String getDni() {
@@ -98,5 +113,6 @@ public class Client {
 
 	public void setDni(String dni) {
 		this.dni = dni;
+		HibernateUtil.update(this);
 	}
 }

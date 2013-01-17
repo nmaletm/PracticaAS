@@ -13,6 +13,7 @@ import org.hibernate.Query;
 import presentation.ContractarViatgeController;
 import datainterface.CtrlCiutats;
 import datainterface.CtrlClient;
+import datainterface.CtrlHabitacio;
 import datainterface.CtrlHotel;
 import datainterface.CtrlViatge;
 import datainterface.DataControllerFactory;
@@ -25,7 +26,7 @@ import domain.Viatge;
 
 public class Main {
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws Exception {
 
 		printAjuda();
 		char opcio = readOption();
@@ -45,7 +46,7 @@ public class Main {
 					ContractarViatgeController.getInstance().inicia();
 					break;
 				default:
-					System.out.println("No has introduit una opció correcte!");
+					System.out.println("No has introduit una opciï¿½ correcte!");
 			}
 
 			opcio = readOption();
@@ -54,76 +55,41 @@ public class Main {
 
 	}
 
-	private static void posaDades(){
+	private static void posaDades() throws Exception{
 		// Posem els clients
 		{
-		 	Client c = new Client();
-	    	c.setNom("Marc");
-	    	c.setDni("11111111");
-	    	c.setTlfn("46513121");
-	    	c.setNombreViatges(0);
-	    	HibernateUtil.save(c);
-	    	
-	    	c.setNom("Andreu");
-	    	c.setDni("22222222");
-	    	c.setTlfn("54665421");
-	    	c.setNombreViatges(0);
-	    	HibernateUtil.save(c);
-	    	
-	    	c.setNom("Xavi");
-	    	c.setDni("33333333");
-	    	c.setTlfn("4654232");
-	    	c.setNombreViatges(0);
-	    	HibernateUtil.save(c);
-	    	
-	    	c.setNom("Nestor");
-	    	c.setDni("44444444");
-	    	c.setTlfn("56454512");
-	    	c.setNombreViatges(0);
-	    	HibernateUtil.save(c);	
+		 	Client c1 = new Client("11111111","Marc","46513121",null);
+		 	Client c2 = new Client("22222222","Andreu","54665421",null);
+	    	Client c3 = new Client("33333333","Xavi","4654232",null);
+	    	Client c4 = new Client("44444444","Nestor","56454512",null);
 		}
 		
 		List<Hotel> llistaHotels = new ArrayList<Hotel>();		
 		// Creem un hotel amb 2 habitacions
 		{
+			Integer hotelID = Hotel.hashCode("Barcelona", "Rey Juan Carlos");
 			List<Habitacio> llistaHab = new ArrayList<Habitacio>();
 			{
-				Habitacio hab = new Habitacio();
-				hab.setNumero(3);
+				Habitacio hab = new Habitacio(hotelID,3);
 				llistaHab.add(hab);
 			}
 			{
-				Habitacio hab = new Habitacio();
-				hab.setNumero(5);
+				Habitacio hab = new Habitacio(hotelID,5);
 				llistaHab.add(hab);
 			}
-			
-	    	Hotel h = new Hotel("Barcelona","Rey Juan Carlos", 300);
-	    	h.setHabitacions(llistaHab);
+			{
+				Habitacio hab = new Habitacio(hotelID,4);
+				llistaHab.add(hab);
+			}
+	    	Hotel h = new Hotel("Barcelona","Rey Juan Carlos", 300,llistaHab);
 	    	llistaHotels.add(h);
 		}
 		
 		// Posem les ciutats
 		{
-		 	Ciutat c = new Ciutat();
-	    	c.setNom("Barcelona");
-	    	c.setDescripcio("BCN una gran ciutat");
-	    	c.setPreuVol(24);
-	    	c.setHotels(llistaHotels);
-	    	
-	    	HibernateUtil.save(c);
-	    	
-	    	c = new Ciutat();
-	    	c.setNom("Madrid");
-	    	c.setDescripcio("MAD una altre gran ciutat");
-	    	c.setPreuVol(25);
-	    	HibernateUtil.save(c);
-	    	
-	    	c = new Ciutat();
-	    	c.setNom("Tarragona");
-	    	c.setDescripcio("També coneguda com a Tarraco");
-	    	c.setPreuVol(30);
-	    	HibernateUtil.save(c);
+		 	Ciutat c1 = new Ciutat("Barcelona","BCN una gran ciutat",24,llistaHotels);
+		 	//Ciutat c2 = new Ciutat("Madrid","MAD una altre gran ciutat",25,null);
+		 	//Ciutat c3 = new Ciutat("Tarragona","Tambe coneguda com a Tarraco",30,null);
 		}
 	}
 
@@ -187,7 +153,18 @@ public class Main {
 				}
 			}
 		}
-	
+		// Esborrem totes les Habitacions
+		{
+			CtrlHabitacio cc = DataControllerFactory.getInstance().getHabitacioController();
+			List<Habitacio> sc = (List<Habitacio>) cc.all();
+			if (sc.size() > 0){
+				Iterator<Habitacio> it = sc.iterator();
+				while (it.hasNext()) {
+					Habitacio aux = (Habitacio) it.next();
+					HibernateUtil.delete(aux);
+				}
+			}
+		}
 		
 	}
 	

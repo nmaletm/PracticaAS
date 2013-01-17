@@ -1,5 +1,7 @@
 package domain;
 
+import hibernate.HibernateUtil;
+
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -38,22 +40,20 @@ public class Hotel {
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Habitacio> habitacions;
 	
-	public Hotel(){
-		this.id = 0;
-	}
-
-	public Hotel(String nomCiutat, String nom, float preu){
-		this.nomCiutat = nomCiutat;
-		this.nom = nom;
-		this.preu = preu;
-		this.id = this.hashCode();
+	
+    /** Constructors **/
+	public Hotel() {
+		setId(0);
 	}
 	
-	public List<Habitacio> getHabitacions() {
-		return habitacions;
-	}
-	public void setHabitacions(List<Habitacio> habitacions) {
-		this.habitacions = habitacions;
+	public Hotel(String hNomCiutat, String hNom, float hPreu, List<Habitacio> hHabitacions) throws Exception{
+	   	if(hHabitacions.size() < 3) throw new Exception ("habitacionsInsuficients");
+	   	nomCiutat = hNomCiutat;
+		nom = hNom;
+		preu = hPreu;
+		habitacions = hHabitacions;
+		this.id = this.hashCode();
+    	HibernateUtil.save(this);
 	}
 
     /** Implementació de l'operació obteVariacioPreu.
@@ -104,6 +104,7 @@ public class Hotel {
 	
 	public void setPreu(float preu) {
 		this.preu = preu;
+		HibernateUtil.update(this);
 	}
 	
 	public String getNom() {
@@ -113,6 +114,16 @@ public class Hotel {
 	public void setNom(String nom) {
 		this.nom = nom;
 		this.id = this.hashCode();
+		HibernateUtil.update(this);
+	}
+	
+	public List<Habitacio> getHabitacions() {
+		return habitacions;
+	}
+	
+	public void setHabitacions(List<Habitacio> habitacions) {
+		this.habitacions = habitacions;
+		HibernateUtil.update(this);
 	}
 	
 	/** Generació de l'Id Artificial **/

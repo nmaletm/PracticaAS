@@ -1,5 +1,7 @@
 package domain;
 
+import hibernate.HibernateUtil;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -34,6 +36,18 @@ public class Ciutat {
     @Column(name="preuVol")
 	private float preuVol;
     
+    /** Constructors **/
+    public Ciutat() {}
+    
+    public Ciutat(String cNom, String cDescripcio, float cPreuVol, List<Hotel> cHotels) throws Exception {
+    	if(cHotels.size() == 0) throw new Exception ("noTeHotels");
+    	nom = cNom;
+    	descripcio = cDescripcio;
+    	preuVol = cPreuVol;
+    	hotels = cHotels;
+    	HibernateUtil.save(this);
+    }
+    
     /** Relació 1->1..* amb la classe Hotel, navegable en el sentit Ciutat->Hotel. **/
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER) 
 	@IndexColumn(name="INDEX_COL_"+TAULA)
@@ -64,6 +78,7 @@ public class Ciutat {
     
 	public void setNom(String nom) {
 		this.nom = nom;
+		HibernateUtil.update(this);
 	}
 	
     public Float getPreuVol() {
@@ -72,6 +87,7 @@ public class Ciutat {
     
 	public void setPreuVol(int preuVol) {
 		this.preuVol = preuVol;		
+		HibernateUtil.update(this);
 	}
 
 	public String getDescripcio() {
@@ -80,13 +96,16 @@ public class Ciutat {
 
 	public void setDescripcio(String descripcio) {
 		this.descripcio = descripcio;
+		HibernateUtil.update(this);
 	}
 
 	public List<Hotel> getHotels() {
 		return hotels;
 	}
 
-	public void setHotels(List<Hotel> hotels) {
+	public void setHotels(List<Hotel> hotels) throws Exception {
+		if(hotels.size() == 0) throw new Exception ("noTeHotels");
 		this.hotels = hotels;
+		HibernateUtil.update(this);
 	}
 }

@@ -37,14 +37,16 @@ public class Habitacio {
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Viatge> viatges;
 	
-    public Habitacio(){
-    	this.id = 0;
-    }
-    
+	/** Constructors **/
+	public Habitacio() {
+		setId(0);
+	}
+	
     public Habitacio(Integer hotelID, Integer numero){
     	this.hotelID = hotelID;
     	this.numero = numero;
     	this.id = this.hashCode();
+    	HibernateUtil.save(this);
     }
     
 	/** Implementació de l'operació estaLliure.
@@ -73,6 +75,7 @@ public class Habitacio {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
     	this.id = this.hashCode();
+    	HibernateUtil.update(this);
 	}
 
 	/** Generació de l'Id Artificial **/

@@ -43,10 +43,11 @@ public class Viatge {
 	@ManyToOne(optional = true, cascade = CascadeType.ALL)
 	private Habitacio habitacio;
 	
-    public Viatge() {
-    	setId(0);
-    }
-    
+	/** Constructors **/
+	public Viatge() {
+		setId(0);
+	}
+	
     public Viatge(Client cl, Date dataIni, Date dataFi, Ciutat c) {
     	client = cl;
     	dataInici = dataIni;
