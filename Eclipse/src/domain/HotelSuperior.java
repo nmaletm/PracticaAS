@@ -14,6 +14,9 @@ public class HotelSuperior extends Hotel {
     @Column(name="recarrec")
 	private float recarrec;
     
+    /** Implementació de l'operació obteVariacioPreu.
+	 *  Retorna la variació de preu associada a aquest HoteSuperior.
+	 *  Implementació del patró plantilla. **/
     @Override
     public Float obteVariacioPreu() {
     	return recarrec;

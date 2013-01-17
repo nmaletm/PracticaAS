@@ -14,6 +14,9 @@ public class HotelLowCost extends Hotel {
     @Column(name="descompte")
 	private float descompte;
     
+    /** Implementació de l'operació obteVariacioPreu.
+	 *  Retorna la variació de preu associada a aquest HoteLowCost. 
+	 *  Implementació del patró plantilla. **/
     @Override
     public Float obteVariacioPreu() {
     	return -descompte;

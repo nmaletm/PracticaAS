@@ -55,20 +55,28 @@ public class Viatge {
     	//HibernateUtil.save(cl);
     }
     
+    /** Implementació de l'operació interseccionaPeriode.
+	 *  Retorna cert si el període del Viatge intersecciona amb el període dataIni-dataFi, fals en altre cas. **/
     public Boolean interseccionaPeriode(Date dataIni, Date dataFi) {
     	return ((dataInici.before(dataIni) && dataFinal.after(dataIni)) || 
     			(dataInici.before(dataFi) && dataFinal.after(dataFi)) ||
     			(dataInici.after(dataFi) && dataFinal.before(dataFi)));
     }
     
+    /** Implementació de l'operació getHotelsLliures.
+	 *  Retorna el conjunt d'hotels. de la Ciutat del Viatge, que estan lliures durant el període d'aquest Viatge. **/
     public HashSet<Pair<String,Float>> getHotelsLliures() {
     	return ciutat.getHotelsLliures(dataInici, dataFinal);
     }
     
+    /** Implementació de l'operació afegeixHabitació.
+	 *  Assigna l'Habitacio h a aquest Viatge. **/
     public void afegeixHabitacio(Habitacio h) {
     	habitacio = h;
     }
     
+    /** Implementació de l'operació getNomCiutat.
+	 *  Retorna el nom de la Ciutat del Viatge. **/
     public String getNomCiutat() {
     	return ciutat.getNom();
     }

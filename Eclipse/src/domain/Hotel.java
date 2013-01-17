@@ -56,10 +56,15 @@ public class Hotel {
 		this.habitacions = habitacions;
 	}
 
+    /** Implementació de l'operació obteVariacioPreu.
+	 *  Retorna la variació de preu associada a aquest Hotel.
+	 *  Implementació del patró plantilla. **/
 	public Float obteVariacioPreu() {
 		return (float) 0;
 	}
 	
+	/** Implementació de l'operació teHabitacioLliure.
+	 *  Retorna cert si l'Hotel té alguna Habitacio no ocupada en el període dataIni-dataFi. **/
 	public Boolean teHabitacioLliure(Date dataIni, Date dataFi) {
 		Boolean trobat = false;
 		Iterator<Habitacio> it = habitacions.iterator();
@@ -69,11 +74,15 @@ public class Hotel {
     	return trobat;
 	}
 	
+	/** Implementació de l'operació calculaPreuHabitacio.
+	 *  Retorna el preu de llogar una Habitacio d'aquest Hotel pel període dataIni-dataFi. **/
 	public Float calculaPreuHabitacio(Date dataIni, Date dataFi) {
 		float var = obteVariacioPreu();
     	return (preu+var)*((dataFi.getTime()-dataIni.getTime())/1000/60/60/24);	
 	}
 	
+	/** Implementació de l'operació getHabitacioLliure.
+	 *  Retorna una Habitacio lliure d'aquest Hotel pel període dataIni-dataFi. **/
 	public Habitacio getHabitacioLliure(Date dataIni, Date dataFi) {
 		Boolean trobat = false;
 		Habitacio hab = null;

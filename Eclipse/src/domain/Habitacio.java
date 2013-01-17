@@ -47,6 +47,24 @@ public class Habitacio {
     	this.id = this.hashCode();
     }
     
+	/** Implementació de l'operació estaLliure.
+	 *  Retorna cert si l'Habitacio no està associada a cap Viatge en el període dataIni-dataFi. **/
+	public Boolean estaLliure(Date dataIni, Date dataFi) {
+		Boolean trobat = true;
+		Iterator<Viatge> it = viatges.iterator();
+		while (it.hasNext() && trobat)
+			trobat = !it.next().interseccionaPeriode(dataIni, dataFi);
+    	return trobat;	
+	}
+	
+	/** Implementació de l'operació afegeixViatge.
+	 *  Afegeix el Viatge v al conjunt de viatges de l'Habitació. **/
+	public void afegeixViatge(Viatge v) {
+		viatges.add(v);
+		v.afegeixHabitacio(this);
+		HibernateUtil.update(v);
+	}
+	
     /** Getters i Setters dels atributs **/
 	public Integer getNumero() {
 		return numero;
@@ -57,20 +75,6 @@ public class Habitacio {
     	this.id = this.hashCode();
 	}
 
-	public Boolean estaLliure(Date dataIni, Date dataFi) {
-		Boolean trobat = true;
-		Iterator<Viatge> it = viatges.iterator();
-		while (it.hasNext() && trobat)
-			trobat = !it.next().interseccionaPeriode(dataIni, dataFi);
-    	return trobat;	
-	}
-	
-	public void afegeixViatge(Viatge v) {
-		viatges.add(v);
-		v.afegeixHabitacio(this);
-		HibernateUtil.update(v);
-	}
-	
 	/** Generació de l'Id Artificial **/
     public int hashCode(){
         return hashCode(this.hotelID, this.numero);

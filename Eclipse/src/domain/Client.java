@@ -39,6 +39,8 @@ public class Client {
 	@IndexColumn(name="INDEX_COL_"+TAULA)
 	private List<Viatge> viatges;  
 	
+	/** Implementació de l'operació téViatge.
+	 *  Retorna cert si el client té algun Viatge comprès en el període dataIni-dataFi, fals en cas contrari. **/
     public Boolean teViatge(Date dataIni, Date dataFi) {
     	Iterator<Viatge> it = getViatges().iterator();
     	Boolean trobat = false;
@@ -47,6 +49,8 @@ public class Client {
     	return trobat;
     }
     
+	/** Implementació de l'operació afageixViatge.
+	 *  Afegeix el Viatge v al conjunt de viatges del Client. **/
     public void afegeixViatge (Viatge v) {
     	getViatges().add(v);
     	setNombreViatges(getNombreViatges() + 1);
