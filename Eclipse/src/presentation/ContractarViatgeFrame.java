@@ -49,6 +49,10 @@ public class ContractarViatgeFrame extends JFrame {
 		setContentPane(contentPane);
 	}
 
+	public void mostraInici(){
+		canviPanel(new ContractarViatgeView1());
+		setSize(300, 200);
+	}
 	
 	public void mostraMissatge(String missatge) {
 		contentPane.mostraMissatge(missatge);

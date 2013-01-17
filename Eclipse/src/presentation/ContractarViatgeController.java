@@ -31,6 +31,7 @@ public class ContractarViatgeController {
 	
 	public void inicia(){
 		view.mostra();
+		view.mostraInici();
 	}
 	
 	public void prOkObteCiutats() {

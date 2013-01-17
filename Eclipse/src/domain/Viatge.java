@@ -99,7 +99,7 @@ public class Viatge {
     public static int hashCode(String dni, Date dataIni){
         String sSurrogate =   String.format("%10s", dni)      // 20 chars
                             + String.format("%10d", dataIni.getTime());     // 10 chars
-        System.out.println("ID viatge->"+sSurrogate.hashCode());
+
         return sSurrogate.hashCode();
     }
 
