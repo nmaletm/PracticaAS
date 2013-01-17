@@ -39,14 +39,17 @@ public class Main {
 				case 'd':
 					esborraDades();
 					break;
-				case 'c':
-					posaDades();
+				case '1':
+					posaDadesJoc1();
+					break;
+				case '2':
+					posaDadesJoc2();
 					break;
 				case 'r':
 					ContractarViatgeController.getInstance().inicia();
 					break;
 				default:
-					System.out.println("No has introduit una opci� correcte!");
+					System.out.println("No has introduit una opcio correcte!");
 			}
 
 			opcio = readOption();
@@ -55,7 +58,67 @@ public class Main {
 
 	}
 
-	private static void posaDades() throws Exception{
+	private static void posaDadesJoc2() throws Exception{
+		esborraDades();
+		// Posem els clients
+		{
+		 	Client c1 = new Client("11111111","Marc","46513121",null);
+		 	Client c2 = new Client("22222222","Andreu","54665421",null);
+	    	Client c3 = new Client("33333333","Xavi","4654232",null);
+	    	Client c4 = new Client("44444444","Nestor","56454512",null);
+		}
+		
+		List<Hotel> llistaHotels1 = new ArrayList<Hotel>();		
+		// Creem un hotel amb 3 habitacions
+		{
+			Integer hotelID = Hotel.hashCode("Barcelona (R)", "Rey Juan Carlos");
+			List<Habitacio> llistaHab = new ArrayList<Habitacio>();
+			{
+				Habitacio hab = new Habitacio(hotelID,3);
+				llistaHab.add(hab);
+			}
+			{
+				Habitacio hab = new Habitacio(hotelID,5);
+				llistaHab.add(hab);
+			}
+			{
+				Habitacio hab = new Habitacio(hotelID,4);
+				llistaHab.add(hab);
+			}
+	    	Hotel h = new Hotel("Barcelona (R)","Rey Juan Carlos", 300,llistaHab);
+	    	llistaHotels1.add(h);
+		}
+		
+		List<Hotel> llistaHotels2 = new ArrayList<Hotel>();		
+		// Creem un hotel amb 3 habitacions
+		{
+			Integer hotelID = Hotel.hashCode("Madrid", "Rey Juan Carlos");
+			List<Habitacio> llistaHab = new ArrayList<Habitacio>();
+			{
+				Habitacio hab = new Habitacio(hotelID,3);
+				llistaHab.add(hab);
+			}
+			{
+				Habitacio hab = new Habitacio(hotelID,5);
+				llistaHab.add(hab);
+			}
+			{
+				Habitacio hab = new Habitacio(hotelID,4);
+				llistaHab.add(hab);
+			}
+	    	Hotel h = new Hotel("Madrid","Rey Juan Carlos", 300,llistaHab);
+	    	llistaHotels2.add(h);
+		}
+		
+		// Posem les ciutats
+		{
+		 	Ciutat c1 = new Ciutat("Barcelona (R)","BCN una gran ciutat",24,llistaHotels1);
+		 	Ciutat c2 = new Ciutat("Madrid","MAD una altre gran ciutat",25,llistaHotels2);
+		}
+	}
+
+	private static void posaDadesJoc1() throws Exception{
+		esborraDades();
 		// Posem els clients
 		{
 		 	Client c1 = new Client("11111111","Marc","46513121",null);
@@ -65,7 +128,7 @@ public class Main {
 		}
 		
 		List<Hotel> llistaHotels = new ArrayList<Hotel>();		
-		// Creem un hotel amb 2 habitacions
+		// Creem un hotel amb 3 habitacions
 		{
 			Integer hotelID = Hotel.hashCode("Barcelona", "Rey Juan Carlos");
 			List<Habitacio> llistaHab = new ArrayList<Habitacio>();
@@ -92,8 +155,6 @@ public class Main {
 		 	//Ciutat c3 = new Ciutat("Tarragona","Tambe coneguda com a Tarraco",30,null);
 		}
 	}
-
-
 	
 	private static void esborraDades(){
 		/*
@@ -187,7 +248,8 @@ public class Main {
 	private static void printAjuda(){
 		System.out.println("Menu:");
 		System.out.println("A -> Ajuda");
-		System.out.println("C -> Posa les dades necessaries");
+		System.out.println("1 -> Posa les dades del joc de proves 1");
+		System.out.println("2 -> Posa les dades del joc de proves 2");
 		System.out.println("D -> Esborrar totes les dades");
 		System.out.println("R -> Inicia UI programa ");
 		System.out.println("E -> Sortir");
