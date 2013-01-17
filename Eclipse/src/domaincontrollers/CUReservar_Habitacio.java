@@ -16,10 +16,15 @@ import domain.Viatge;
 
 /** Implementació de la classe CUReservar_Habitacio del paquet Domain Controllers. **/
 public class CUReservar_Habitacio extends ControladorCasUs {
-	private Viatge viatge;
+	/** Atributs de la Classe **/
 	private Date dataInici;
 	private Date dataFinal;
 	
+	/** Relació 0..1->0..1 amb la classe Viatge, navegable en sentit CUReservar_Habitacio->Viatge. **/
+	private Viatge viatge;
+	
+	/** Implementació de l'operació mostraHotelsLliures.
+	 *  Retorna el nom i el preu dels Hotels disponibles pel Viatge identificat per (dniClient,dataIni). **/
 	public Pair<Pair<String,Date>,HashSet<Pair<String,Float>>> mostraHotelsLliures(String dniClient, Date dataIni) throws Exception {
 		CtrlViatge vc = DataControllerFactory.getInstance().getViatgeController();
 		
@@ -37,6 +42,9 @@ public class CUReservar_Habitacio extends ControladorCasUs {
     	return new Pair<Pair<String,Date>,HashSet<Pair<String,Float>>>(new Pair<String,Date>(nom,data),resultat);
 	}
 	
+	/** Implementació de l'operació resevarHabitacio.
+	 *  Es crea una instància de l’associació Reserva entre el Viatge i una Habitacio disponible qualsevol de l'Hotel nomH
+	 *  en el període del Viatge. **/
 	public void reservaHabitacio(String nomH) {
 		CtrlHotel hc = DataControllerFactory.getInstance().getHotelController();
 		
