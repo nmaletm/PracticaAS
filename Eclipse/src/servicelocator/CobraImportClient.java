@@ -36,7 +36,7 @@ public class CobraImportClient {
 		}
 	}*/
 
-	public boolean autoritza(String dniClient, String numTarg, float preu, String dataCad){
+	public boolean autoritza(String dniClient, String numTarg, float preu, String dataCad) throws Exception{
 		boolean resultat = false;
 		try{
 			BankServiceStub stub= new BankServiceStub();
@@ -48,9 +48,9 @@ public class CobraImportClient {
 			CobraImportResponse res = stub.cobraImport(cobra);
 			resultat = res.get_return(); 
 		} catch (AxisFault e){
-			e.printStackTrace();
+			throw new Exception("serveiNoDisponible");
 		} catch (RemoteException e){
-			e.printStackTrace();
+			throw new Exception("serveiNoDisponible");
 		}
 		return resultat;
 	}

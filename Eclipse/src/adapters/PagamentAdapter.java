@@ -10,14 +10,7 @@ public class PagamentAdapter implements IPagamentAdapter{
 
 	@Override
 	public Boolean pagament(String dniClient, String numTarg, float preu, Date dataCad) throws Exception {
-		boolean result = false;
-		try{
-			CobraImportClient bs = (CobraImportClient)ServiceLocator.getInstance().find("BankService");
-			result= bs.autoritza(dniClient,numTarg,preu,dataCad.toString());
-		}
-		catch(Exception e){
-			throw new Exception("serveiNoDisponible");
-		}
-		return result;
+		CobraImportClient bs = (CobraImportClient)ServiceLocator.getInstance().find("BankService");
+		return bs.autoritza(dniClient,numTarg,preu,dataCad.toString());
 	}
 }
