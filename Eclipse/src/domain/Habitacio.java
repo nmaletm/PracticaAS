@@ -47,6 +47,7 @@ public class Habitacio {
     	this.id = this.hashCode();
     }
     
+    /** Getters i Setters dels atributs **/
 	public Integer getNumero() {
 		return numero;
 	}
@@ -54,14 +55,6 @@ public class Habitacio {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
     	this.id = this.hashCode();
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Boolean estaLliure(Date dataIni, Date dataFi) {
@@ -78,6 +71,7 @@ public class Habitacio {
 		HibernateUtil.update(v);
 	}
 	
+	/** Generació de l'Id Artificial **/
     public int hashCode(){
         return hashCode(this.hotelID, this.numero);
     }
@@ -88,4 +82,12 @@ public class Habitacio {
        
         return sSurrogate.hashCode();
     }
+    
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 }

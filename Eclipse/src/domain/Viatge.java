@@ -55,14 +55,6 @@ public class Viatge {
     	//HibernateUtil.save(cl);
     }
     
-    public Date getDataFi() {
-    	return dataFinal;
-    }
-    
-    public String getNomCiutat() {
-    	return ciutat.getNom();
-    }
-    
     public Boolean interseccionaPeriode(Date dataIni, Date dataFi) {
     	return ((dataInici.before(dataIni) && dataFinal.after(dataIni)) || 
     			(dataInici.before(dataFi) && dataFinal.after(dataFi)) ||
@@ -76,7 +68,17 @@ public class Viatge {
     public void afegeixHabitacio(Habitacio h) {
     	habitacio = h;
     }
-	
+    
+    public String getNomCiutat() {
+    	return ciutat.getNom();
+    }
+    
+    /** Getters i Setters dels atributs **/
+    public Date getDataFi() {
+    	return dataFinal;
+    }
+    
+    /** Generació de l'Id Artificial **/
     public int hashCode(){
     	return hashCode(this.client.getDni(), this.dataInici);
     }

@@ -52,6 +52,7 @@ public class Client {
     	setNombreViatges(getNombreViatges() + 1);
     }
 
+    /** Getters i Setters dels atributs **/
 	public List<Viatge> getViatges() {
 		return viatges;
 	}

@@ -49,26 +49,6 @@ public class Hotel {
 		this.id = this.hashCode();
 	}
 	
-	public float getPreu() {
-		return preu;
-	}
-	public void setPreu(float preu) {
-		this.preu = preu;
-	}
-	public String getNom() {
-		return nom;
-	}
-	public void setNom(String nom) {
-		this.nom = nom;
-		this.id = this.hashCode();
-	}
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public List<Habitacio> getHabitacions() {
 		return habitacions;
 	}
@@ -107,7 +87,26 @@ public class Hotel {
 		
     	return hab;
 	}
+	    
+	/** Getters i Setters dels atributs **/
+	public float getPreu() {
+		return preu;
+	}
 	
+	public void setPreu(float preu) {
+		this.preu = preu;
+	}
+	
+	public String getNom() {
+		return nom;
+	}
+	
+	public void setNom(String nom) {
+		this.nom = nom;
+		this.id = this.hashCode();
+	}
+	
+	/** Generació de l'Id Artificial **/
     public int hashCode(){
         return hashCode(this.nomCiutat, this.nom);
     }
@@ -118,4 +117,12 @@ public class Hotel {
        
         return sSurrogate.hashCode();
     }
+    
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 }
