@@ -9,4 +9,4 @@ En aquest treball han col·laborat:
 - [Andreu](https://github.com/andreuJuan)
 - [Marc Comino](https://github.com/marccomino)
 - [Xavi](https://github.com/xavtiz)
-- [Néstor](https://github.com/andreuJuan)
+- [Néstor](https://github.com/nmaletm)
